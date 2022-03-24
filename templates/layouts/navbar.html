@@ -1,0 +1,52 @@
+<!-- Navigation Bar from bootstrap
+This HTML is setup as a fragment allowing it to be "included" by other HTML files via Jinja2
+-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <a class="navbar-brand" href="https://csp.nighthawkcodingsociety.com/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <a style="color: #374db9" class="navbar-brand" href="/">StudyOwl</a>
+        <div class="navbar-nav">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav" style="font-family: monospace; background-color: #374db9">
+                    <div style="font-family: monospace; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 21px;" class="nav-link" href={{ url_for('index') }}>Home</a>
+                    </div>
+
+
+
+        <script>
+            /* When the user clicks on the button,
+            toggle between hiding and showing the dropdown content */
+            function myFunction2() {
+                document.getElementById("Dropdown2").classList.toggle("show");
+            }
+
+            function myFunction1() {
+                document.getElementById("Dropdown1").classList.toggle("show");
+            }
+
+            function myFunction3() {
+                document.getElementById("Dropdown3").classList.toggle("show");
+            }
+
+            function myFunction4() {
+                document.getElementById("Dropdown4").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    const dropdowns = document.getElementsByClassName("dropdown-content");
+                    let i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        const openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            }
+        </script>
