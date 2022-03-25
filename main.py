@@ -8,6 +8,14 @@ from __init__ import app
 def index():
     return render_template("index.html")
 
+@app.route('/sports/')
+def sports():
+    return render_template("sports.html")
+
+@app.route('/scrolling/')
+def scrolling():
+    return render_template("scrolling.html")
+
 
 
 # runs the application on the development server

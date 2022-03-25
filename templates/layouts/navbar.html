@@ -7,46 +7,60 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <a style="color: #374db9" class="navbar-brand" href="/">StudyOwl</a>
         <div class="navbar-nav">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav" style="font-family: monospace; background-color: #374db9">
-                    <div style="font-family: monospace; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 21px;" class="nav-link" href={{ url_for('index') }}>Home</a>
+                <div class="navbar-nav" style="font-family: monospace; background-color: #384F8F">
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Home</a>
+                    </div>
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('sports') }}>Sports</a>
+                    </div>
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
+                    </div>
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
+                    </div>
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
+                    </div>
+                    <div style="font-family: myFirstFont; color: ghostwhite">
+                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
                     </div>
 
 
 
-        <script>
-            /* When the user clicks on the button,
-            toggle between hiding and showing the dropdown content */
-            function myFunction2() {
-                document.getElementById("Dropdown2").classList.toggle("show");
-            }
-
-            function myFunction1() {
-                document.getElementById("Dropdown1").classList.toggle("show");
-            }
-
-            function myFunction3() {
-                document.getElementById("Dropdown3").classList.toggle("show");
-            }
-
-            function myFunction4() {
-                document.getElementById("Dropdown4").classList.toggle("show");
-            }
-
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(event) {
-                if (!event.target.matches('.dropbtn')) {
-                    const dropdowns = document.getElementsByClassName("dropdown-content");
-                    let i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                        const openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
+                    <script>
+                        /* When the user clicks on the button,
+                        toggle between hiding and showing the dropdown content */
+                        function myFunction2() {
+                            document.getElementById("Dropdown2").classList.toggle("show");
                         }
-                    }
-                }
-            }
-        </script>
+
+                        function myFunction1() {
+                            document.getElementById("Dropdown1").classList.toggle("show");
+                        }
+
+                        function myFunction3() {
+                            document.getElementById("Dropdown3").classList.toggle("show");
+                        }
+
+                        function myFunction4() {
+                            document.getElementById("Dropdown4").classList.toggle("show");
+                        }
+
+                        // Close the dropdown if the user clicks outside of it
+                        window.onclick = function(event) {
+                            if (!event.target.matches('.dropbtn')) {
+                                const dropdowns = document.getElementsByClassName("dropdown-content");
+                                let i;
+                                for (i = 0; i < dropdowns.length; i++) {
+                                    const openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
+                                    }
+                                }
+                            }
+                        }
+                    </script>
