@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="center-block" style="margin: 2% 5% 5%; font-family: gilroy,serif;">
+            <div class="col-12" style="text-align: center;">
+                <h1><strong>All sports</strong></h1>
+            </div>
+
+            <div class="jumbotron text-left row">
+                <div class="col-md">
+                    {% for sport in sports %}
+                        <p style="color: black;" class="setup"><strong>{{sport.id}}. {{sport.sport}}</strong></p>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <table style="margin: 2%">
+            <tr>
+                <th>JSON Data</th>
+            </tr>
+            <tr>
+                <td>{{sports}}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

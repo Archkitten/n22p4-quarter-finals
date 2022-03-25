@@ -2,7 +2,8 @@
 from flask import Flask, render_template
 from __init__ import app
 
-
+from sportslocalapi.sportapi import sportapi_bp
+app.register_blueprint(sportapi_bp)
 
 @app.route('/')
 def index():
