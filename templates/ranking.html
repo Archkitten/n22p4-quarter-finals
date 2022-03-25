@@ -1,0 +1,46 @@
+!-- Extending the predefined project layout -->
+{% extends "layouts/base.html" %}
+
+<!- This variable sets name of browser tab  -->
+{% set project = "Rankings Page" %}
+
+<!- This is a replacement block for Body in base.html -->
+{% block body %}
+
+    {% set players = response %}
+
+    <div class="-block" style="margin: 2% 25% 5%; font-family: gilroy,serif;">
+        <div class="col-12" style="text-align: center;">
+            <h1>Live ATP Rankings</h1>
+        </div>
+
+        <div class="col-12 mainbox center-block">
+            <table style="margin: 2%">
+                <tr>
+                    <th>Logo</th>
+                    <th>Team Name</th>
+                    <th>Country</th>
+                </tr>
+
+                {% for player in players %}
+                    <tr>
+                        {% set logo = player.data.team.flag %}
+                        <td><img src="{{logo}}"></td>
+                        {% set teamname = team.name %}
+                        <td>{{teamname}}</td>
+                        {% set country = team.country %}
+                        <td>{{country}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
