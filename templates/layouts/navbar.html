@@ -1,66 +1,33 @@
-<!-- Navigation Bar from bootstrap
-This HTML is setup as a fragment allowing it to be "included" by other HTML files via Jinja2
--->
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-    <a class="navbar-brand" href="https://csp.nighthawkcodingsociety.com/"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav" style="font-family: monospace; background-color: #384F8F">
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Home</a>
-                    </div>
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('sports') }}>Sports</a>
-                    </div>
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
-                    </div>
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
-                    </div>
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
-                    </div>
-                    <div style="font-family: myFirstFont; color: ghostwhite">
-                        <a style="color: ghostwhite; font-size: 30px;" class="nav-link" href={{ url_for('index') }}>Filler</a>
-                    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <div class="container-fluid">
+        <div class="btn-group">
+            <a class="navbar-brand" href="#">DNHS Tennis</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarHome">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only"></span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Starters
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href={{ url_for('sports') }}>Sports</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
 
-
-                    <script>
-                        /* When the user clicks on the button,
-                        toggle between hiding and showing the dropdown content */
-                        function myFunction2() {
-                            document.getElementById("Dropdown2").classList.toggle("show");
-                        }
-
-                        function myFunction1() {
-                            document.getElementById("Dropdown1").classList.toggle("show");
-                        }
-
-                        function myFunction3() {
-                            document.getElementById("Dropdown3").classList.toggle("show");
-                        }
-
-                        function myFunction4() {
-                            document.getElementById("Dropdown4").classList.toggle("show");
-                        }
-
-                        // Close the dropdown if the user clicks outside of it
-                        window.onclick = function(event) {
-                            if (!event.target.matches('.dropbtn')) {
-                                const dropdowns = document.getElementsByClassName("dropdown-content");
-                                let i;
-                                for (i = 0; i < dropdowns.length; i++) {
-                                    const openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
-                                }
-                            }
-                        }
-                    </script>
+    </div>
+    </div>
+</nav>
