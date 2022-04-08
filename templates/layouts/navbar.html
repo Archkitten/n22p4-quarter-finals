@@ -10,7 +10,7 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
         <div class="navbar-nav">
             <!-- url_for is a Jinja2 pre-processor that finds route from function name (def) -->
             <nav class="navbar navbar-expand-lg navbar-light bg-black" >
-                <a class="navbar-brand" href="/"style="font-family: exo_bold; color: white; font-size: 40px; padding-right: 20px;padding-left: 270px;">DNHS Tennis</a>
+                <a class="navbar-brand" href="/"style="font-family: exo_bold; color: white; font-size: 40px; padding-right: 20px;padding-left: 240px;">DNHS Tennis</a>
                 <a style="font-family: exo; color: white; font-size: 20px; padding-right: 10px;" class="nav-link" href={{ url_for('index') }}>Home</a>
                 <a style="font-family: exo; color: white; font-size: 20px; padding-right: 20px; padding-left: 20px;" class="nav-link" href={{ url_for('scrolling') }}>Workouts</a>
                 <a style="font-family: exo; color: white; font-size: 20px;padding-right: 20px; padding-left: 20px;" class="nav-link" href={{ url_for('scrolling') }}>Games</a>
@@ -19,15 +19,9 @@ This HTML is setup as a fragment allowing it to be "included" by other HTML file
                 <a href={{ url_for('crud.crud_login') }}>
                     <p id="login" style="box-shadow: 4px 4px #252323; width: 100px;background:#C2DC76;border-radius: 20px;color: black;text-align: center; ">log in</p>
                 </a>
-
-            <div class="collapse navbar-collapse" id="navbarHome">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('crud.crud') }}">Crud <span class="sr-only"></span></a>
-
-                    </li>
-                </ul>
-            </div>
+                <a href={{ url_for('crud.crud') }}>
+                    <img style=" position: absolute; left:1180px; top: 15px;" id="profile" alt="profile" src="/static/img/picture1.png" height="50" width="50">
+                </a>
 
 
 
