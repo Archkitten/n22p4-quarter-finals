@@ -6,6 +6,16 @@
 <!-- CONTENT (in <head>), content for this page -->
 {% block head %}
     <title>CRUD page</title>
+
+
+    <style>
+    .parent {
+    border: 1px solid black;
+    margin: 1rem;
+    padding: 2rem 2rem;
+    text-align: center;
+    }
+    </style>
     <script src={{  url_for("crud.static", filename="javascript/validation.js", version='101') }}></script>
     <script src={{  url_for("crud.static", filename="javascript/reload_page.js", version='101') }}></script>
 {% endblock %}
@@ -15,6 +25,10 @@
     <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom border-primary text-dark">
             <span class="fs-4">SQL CRUD Admin Page</span>
+            <div class='parent'>
+                <div class='child'><h1 style="">Current User: {{ current_user.name }}</h1></div>
+                <div class='child'><button><a href={{url_for('crud.crud_logout')}}>Log out</a></button></div>
+            </div>
         </header>
     </div>
     <div class="container py-4 text-light bg-success">
