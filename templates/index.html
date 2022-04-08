@@ -2,76 +2,97 @@
 
 
 {% block body %}
-    <img id="block" alt="block" src="/static/img/block.png" height="400" width="350">
-    <img id="triangle" alt="triangle" src="/static/img/triangle.png" height="350" width="400">
-    <img id="semi" alt="semi" src="/static/img/semi.png" height="230" width="500">
-    <img id="rectangle" alt="rectangle" src="/static/img/rectangle.png" height="400" width="500">
-    <img id="players" alt="players" src="/static/img/players.png" height="550" width="541">
-    <h1>Quarter</h1>
-    <h2>Final</h2>
+    <p id="rectangle"></p>
+    <img id="tennis" alt="tennis" src="/static/img/tennisb.png" height="622" width="757">
+    <h1 id="title">DNHS</h1>
+    <h1 id="title2">Tennis</h1>
+    <p id="slogan">everything from game schedules to stats</p>
+    <p id="slogan2">your go to for Tennis at Del Norte HighSchool</p>
 
+    <div id="upcoming_gamesICON">
+        <a href={{ url_for('scrolling') }}>
+            <img id="upcomingIMG" alt="upcoming" src="/static/img/upcoming2.png" width=240" height="150">
+        </a>
+        <p style id="upcoming">Upcoming Games</p>
+    </div>
 
 
 
 
     <style>
         body {
-            background-color: #2A4284;
+            background-color: #2D8CDF;
         }
 
-        #block {
+        #upcoming_gamesICON{
+            position: absolute;
+            left: 400px;
+            top:550px;
+            float: left;
+            width:20%;
+            height:200px;
+        }
+        #upcoming{
+            color: white;
+            font-family: exo;
             position:absolute;
-            top:75px;
-            left: 1px;
+            left:60px;
         }
 
-        #triangle {
+        #upcomingIMG{
+            border-radius: 25px;
+        }
+
+        #title {
+            font-family: exo_bold;
+            color: white;
+            font-size: 100px;
             position:absolute;
-            top:75px;
+            left: 200px;
+            top: 200px;
+        }
+
+        #slogan {
+            font-family: exo_med;
+            color: white;
+            font-size: 40px;
+            position:absolute;
+            left: 210px;
+            top: 345px;
+        }
+
+        #slogan2 {
+            font-family: exo_med;
+            color: white;
+            font-size: 40px;
+            position:absolute;
+            left: 185px;
+            top: 400px;
+        }
+
+        #title2 {
+            font-family: exo;
+            color: white;
+            font-size: 100px;
+            position:absolute;
+            left: 500px;
+            top: 200px;
+        }
+
+        #tennis {
+            position:absolute;
+            top:230px;
             right: 1px;
         }
 
-        #semi {
-            position:absolute;
-            top:620px;
-        }
-
         #rectangle {
-            position:absolute;
-            top:450px;
-            right:1px;
-        }
-
-        #players {
-            position:absolute;
-            top:300px;
-            left:30px;
-        }
-        @font-face {
-            font-family: myFirstFont;
-            src: url(/static/img/Montserrat-Bold.ttf);
-        }
-
-        h1 {
-            font-size: 150px;
+            width: 1250px;
+            height: 700px;
+            border: 5px solid white;
             position: absolute;
-            top: 200px;
-            right: 200px;
-            font-family: myFirstFont;
-            font-weight: bold;
-            color: white;
-            text-shadow: 7px 7px #C17720;
-        }
-
-        h2 {
-            font-size: 150px;
-            position: absolute;
-            top: 350px;
-            right: 200px;
-            font-family: myFirstFont;
-            font-weight: bold;
-            color: white;
-            text-shadow: 7px 7px #C17720;
+            left:139px;
+            top:100px;
+            border-radius: 85px;
         }
 
 
