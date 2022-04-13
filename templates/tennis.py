@@ -2,6 +2,7 @@ from flask import Flask, Blueprint, render_template, request
 import requests
 from __init__ import app
 import json
+from cruddy.app_crud import login_required
 
 tennis_pg = Blueprint('tennis', __name__,
                       url_prefix='/tennis/',
@@ -9,14 +10,11 @@ tennis_pg = Blueprint('tennis', __name__,
                       static_folder='static', static_url_path='static/tennis')
 
 
-
-
-@tennis_pg.route('/ranking/', methods=['GET','POST'])
+@tennis_pg.route('/ranking/', methods=['GET', 'POST'])
 def ranking():
-
     url = "https://sportscore1.p.rapidapi.com/tennis-rankings/atp"
 
-    querystring = {"page":"1"}
+    querystring = {"page": "1"}
 
     headers = {
         "X-RapidAPI-Host": "sportscore1.p.rapidapi.com",
@@ -32,4 +30,7 @@ def ranking():
 
 
 
-
+@tennis_pg.route('/photos/')
+@login_required
+def photos():
+    return render_template("photos.html")
