@@ -7,7 +7,7 @@
 <!- This is a replacement block for Body in base.html -->
 {% block body %}
 
-    {% set players = response %}
+    {% set players = results %}
 
     <div class="-block" style="margin: 2% 25% 5%; font-family: gilroy,serif;">
         <div class="col-12" style="text-align: center;">
@@ -24,7 +24,7 @@
 
                 {% for player in players %}
                     <tr>
-                        {% set logo = player.data.team.flag %}
+                        {% set logo = player["data"]["team"] %}
                         <td><img src="{{logo}}"></td>
                         {% set teamname = team.name %}
                         <td>{{teamname}}</td>
