@@ -1,0 +1,45 @@
+!-- Extending the predefined project layout -->
+{% extends "layouts/base.html" %}
+
+<!- This variable sets name of browser tab  -->
+{% set project = "Roster Page" %}
+
+<!- This is a replacement block for Body in base.html -->
+{% block body %}
+
+{#    <iframe src="https://app.universaltennis.com/schools/3810"; width=100%></iframe>#}
+
+    {% set roster = results.roster %}
+    <h1>{{ results.displayName }}</h1>
+
+        <h1></h1>
+
+
+    <div class="col-12 mainbox center-block">
+    <table style="margin: 2%">
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Singles UTR</th>
+            <th>Doubles UTR</th>
+            <th>Class</th>
+        </tr>
+
+        {% for player in roster %}
+            <tr>
+                <td>{{ player.displayName }}</td>
+                <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
+                <td>{{ player.singlesUtr }}</td>
+                <td>{{ player.doublesUtr }}</td>
+                <td>{{ player.nationality }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+//poop
+
+
+
+{% endblock %}
+
