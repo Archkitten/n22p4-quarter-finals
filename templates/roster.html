@@ -1,45 +1,77 @@
-!-- Extending the predefined project layout -->
 {% extends "layouts/base.html" %}
 
-<!- This variable sets name of browser tab  -->
 {% set project = "Roster Page" %}
 
 <!- This is a replacement block for Body in base.html -->
+
 {% block body %}
 
 {#    <iframe src="https://app.universaltennis.com/schools/3810"; width=100%></iframe>#}
 
-    {% set roster = results.roster %}
-    <h1>{{ results.displayName }}</h1>
+{% set roster = results.roster %}
 
-        <h1></h1>
+<h1 style="font-family: exo_bold; color: white; text-align: center">Player Roster</h1>
 
-
-    <div class="col-12 mainbox center-block">
-    <table style="margin: 2%">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<div class="col-12 mainbox center-block">
+    <table id="myTable" style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #284F73">
         <tr>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Singles UTR</th>
-            <th>Doubles UTR</th>
-            <th>Class</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
         </tr>
 
         {% for player in roster %}
-            <tr>
-                <td>{{ player.displayName }}</td>
-                <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
-                <td>{{ player.singlesUtr }}</td>
-                <td>{{ player.doublesUtr }}</td>
-                <td>{{ player.nationality }}</td>
-            </tr>
+        <tr style="background-color: #284F73">
+            <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
+            <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
+            <td>{{ player.singlesUtr }}</td>
+            <td>{{ player.doublesUtr }}</td>
+            <td>{{ player.nationality }}</td>
+        </tr>
         {% endfor %}
     </table>
-    </div>
+</div>
 
-//poop
+<style>
+    body {
+        background: #365940;
+    }
+
+    #myInput {
+        position: absolute;
+        left: 26%;
+        width: 50%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+    }
+</style>
+
+    <script>
+        function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+    } else {
+        tr[i].style.display = "none";
+    }
+    }
+    }
+    }
+</script>
 
 
 
 {% endblock %}
-

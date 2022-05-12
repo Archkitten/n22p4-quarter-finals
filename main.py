@@ -6,6 +6,7 @@ from cruddy.app_crud_api import app_crud_api
 from sportslocalapi.sportapi import sportapi_bp
 from templates.tennis import tennis_pg
 
+
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
 app.register_blueprint(app_crud_api)
@@ -21,6 +22,7 @@ def sports():
     return render_template("sports.html")
 
 @app.route('/scrolling/')
+
 def scrolling():
     return render_template("scrolling.html")
 

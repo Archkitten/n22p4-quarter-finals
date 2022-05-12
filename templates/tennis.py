@@ -53,7 +53,7 @@ def roster():
 
     results = json.loads(response.content.decode("utf-8"))
 
-    print(response)
-    print(results)
+    # print(response)
+    # print(results)
 
     return render_template("roster.html", results=results)
