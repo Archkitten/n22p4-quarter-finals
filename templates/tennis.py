@@ -57,3 +57,25 @@ def roster():
     # print(results)
 
     return render_template("roster.html", results=results)
+
+@tennis_pg.route('/roster_girls/', methods=['GET'])
+def roster_girls():
+    myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjU1MzEyIiwiZW1haWwiOiJnaXJpc2hraGFuZGVsd2FsQGhvdG1haWwuY29tIiwiVmVyc2lvbiI6IjEiLCJEZXZpY2VMb2dpbklkIjoiMTA2NTk3NTUiLCJuYmYiOjE2NTEwODg4MzEsImV4cCI6MTY1MzY4MDgzMSwiaWF0IjoxNjUxMDg4ODMxfQ.nGPOJ_wpYC7-eMgQb6deZqCGWRZNMvnTf5VOLhNJOqQ'
+    head = {'Authorization': 'token {}'.format(myToken)}
+
+
+    url = "https://app.universaltennis.com/api/v1/club/3811/school"
+
+
+    # headers = {
+    #     "Authorization": "Bearer {JWT_TOKEN}"
+    # }
+
+    response = requests.get(url, headers=head)
+
+    results = json.loads(response.content.decode("utf-8"))
+
+    # print(response)
+    # print(results)
+
+    return render_template("roster_girls.html", results=results)
