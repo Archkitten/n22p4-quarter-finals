@@ -26,7 +26,9 @@ def sports():
 def scrolling():
     return render_template("scrolling.html")
 
-
+@app.route('/physicaltherapy/')
+def physicaltherapy():
+    return render_template("physicaltherapy.html")
 
 # runs the application on the development server
 if __name__ == "__main__":
