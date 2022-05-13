@@ -10,12 +10,12 @@
 
 {% set roster = results.roster %}
 
-<h1 style="font-family: exo_bold; color: white; text-align: center">Boys Player Roster</h1>
-<a style=" border: 2px solid white;border-radius: 25px; font-family: exo_med; position: absolute; left: 10%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:120px; padding-left: 20px;" class="nav-link" href={{ url_for('tennis.roster_girls') }}>Girls</a>
+<h1 style="font-family: exo_bold; color: white; text-align: center">Girls Player Roster</h1>
+<a style="font-family: exo_med; position: absolute; left: 10%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:140px;padding-left: 20px;" class="nav-link" href={{ url_for('tennis.roster') }}>Boys</a>
 
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 <div class="col-12 mainbox center-block">
-    <table id="myTable" style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #284F73">
+    <table id="myTable" style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #365940">
         <tr>
             <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
             <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
@@ -25,7 +25,7 @@
         </tr>
 
         {% for player in roster %}
-        <tr style="background-color: #284F73">
+        <tr style="background-color: #365940">
             <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
             <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
             <td>{{ player.singlesUtr }}</td>
@@ -38,7 +38,7 @@
 
 <style>
     body {
-        background: #365940;
+        background: #284F73;
     }
 
     #myInput {
@@ -52,24 +52,24 @@
     }
 </style>
 
-    <script>
-        function myFunction() {
+<script>
+    function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-    } else {
-        tr[i].style.display = "none";
-    }
-    }
-    }
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     }
 
 </script>

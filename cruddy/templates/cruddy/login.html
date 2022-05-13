@@ -16,9 +16,9 @@
             <div class="background">
                 <form method="POST" ID="login" action={{url_for('crud.crud_login')}}>
                     <table style="position: absolute; left: 650px;">
-                        <tr><th><label for="email" style="color: #2D8CDF; font-size: 30px;">Email</label></th></tr>
+                        <tr><th><label for="email" style="color: #fff; font-size: 30px;">Email</label></th></tr>
                         <tr><td><input  type="email" id='email' name="email" size="20" required></td></tr>
-                        <tr><th><label  for="password"style="color: #2D8CDF;font-size: 30px">Password</label></th></tr>
+                        <tr><th><label  for="password"style="color: #fff;font-size: 30px">Password</label></th></tr>
                         <tr><td><input type="password" id="password" name="password" size="20" required></td></tr>
                         <tr><th><input id="submitbtn" type="submit" value="Submit"></th></tr>
                         <tr><td><a id="signup" href={{url_for('crud.crud_authorize')}}>Sign Up</a></td></tr>
@@ -31,11 +31,11 @@
 
     <style>
         body{
-        background-color: #C2DC76;
+        background-color: #365940;
     }
 
         #submitbtn {
-            background-color: #2D8CDF;
+            background-color: #fff;
             border-radius: 20px;
             width: 90px;
             height:40px;
