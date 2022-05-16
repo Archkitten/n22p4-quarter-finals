@@ -5,12 +5,16 @@ from cruddy.app_crud import app_crud
 from cruddy.app_crud_api import app_crud_api
 from sportslocalapi.sportapi import sportapi_bp
 from templates.tennis import tennis_pg
+from cruddy.app_notes import app_notes
+import markdown
+
 
 
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
 app.register_blueprint(app_crud_api)
 app.register_blueprint(tennis_pg)
+app.register_blueprint(app_notes)
 
 
 @app.route('/')
