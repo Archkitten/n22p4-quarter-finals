@@ -1,0 +1,163 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+<script>
+  let countdown;
+
+  let minutes = 0;
+  let seconds = 0;
+
+  let timerRunning = false;
+
+  function setTimer() {
+    const minutes_temp = document.getElementById("minutes_html").value;
+    const seconds_temp = document.getElementById("seconds_html").value;
+
+    // The numbers only work if I divide by 1. Don't ask why. I don't know.
+    minutes = minutes_temp / 1;
+    seconds = seconds_temp / 1;
+    // Make sure seconds don't overflow.
+    while (seconds >= 60) {
+      seconds -= 60;
+      minutes += 1;
+    }
+
+    // Send time values back to "timer" HTML element.
+    // If minutes or seconds are single digits, add a leading zero.
+    if (minutes < 10 && seconds < 10) {
+      document.getElementById("timer").innerHTML = "0" + minutes + ":" + "0" + seconds;
+    }
+    else if (seconds < 10) {
+      document.getElementById("timer").innerHTML = minutes + ":" + "0" + seconds;
+    }
+    else if (minutes < 10) {
+      document.getElementById("timer").innerHTML = "0" + minutes + ":" + seconds;
+    }
+    else {
+      document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+    }
+
+    // If the timer is not running, run one instance of the timer. Otherwise, don't make a new one.
+    if (timerRunning == false) {
+      timerRunning = true;
+      // Timer Instance
+      countdown = setInterval(function () {
+        // Reduces seconds by 1 every second. If it drops below 0, reduce minutes by 1.
+        seconds --;
+        if (seconds < 0) {
+          seconds = 59;
+          minutes -= 1;
+        }
+        if (minutes < 0) {
+          seconds = 0;
+          minutes = 0;
+        }
+
+        // Send time values back to "timer" HTML element.
+        // If minutes or seconds are single digits, add a leading zero.
+        if (minutes < 10 && seconds < 10) {
+          document.getElementById("timer").innerHTML = "0" + minutes + ":" + "0" + seconds;
+        }
+        else if (seconds < 10) {
+          document.getElementById("timer").innerHTML = minutes + ":" + "0" + seconds;
+        }
+        else if (minutes < 10) {
+          document.getElementById("timer").innerHTML = "0" + minutes + ":" + seconds;
+        }
+        else {
+          document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+        }
+
+      }, 1000);
+    }
+  }
+</script>
+<script>
+  let homeScore = 0;
+  function addHome() {
+    homeScore += 1;
+    document.getElementById("home_score").innerHTML = homeScore;
+  }
+  function resetHome() {
+    homeScore = 0;
+    document.getElementById("home_score").innerHTML = homeScore;
+  }
+
+  let guestScore = 0;
+  function addGuest() {
+    guestScore += 1;
+    document.getElementById("guest_score").innerHTML = guestScore;
+  }
+  function resetGuest() {
+    guestScore = 0;
+    document.getElementById("guest_score").innerHTML = guestScore;
+  }
+</script>
+
+  <div class="contact" style="min-height: 100vh;">
+
+    <!--Start of body-->
+    <div class="container p-3 my-3 bg-dark text-black rounded">
+      <div class="row p-3 my-3 bg-black text-light rounded">
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <p id="home_score" style="font-size:50px">0</p>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <p id="timer" style="font-size:60px">00:00</p>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <p id="guest_score" style="font-size:50px">0</p>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-12"><br></div>
+        <div class="col-12"><br></div>
+        <div class="col-12"><br></div>
+
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <button class="btn btn-primary" onclick=addHome();>
+            Add Home
+          </button>
+          <button class="btn btn-success" onclick=resetHome();>
+            Reset Home
+          </button>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <label>Enter Minutes:</label>
+          <input id="minutes_html" placeholder="59"><br>
+          <label>Enter Seconds:</label>
+          <input id="seconds_html" placeholder="59"><br>
+          <button class="btn btn-warning" onclick=setTimer();>
+            Set Timer
+          </button>
+        </div>
+
+        <div class="col-1"></div>
+
+        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+          <button class="btn btn-danger" onclick=addGuest();>
+            Add Guest
+          </button>
+          <button class="btn btn-secondary" onclick=resetGuest();>
+            Reset Guest
+          </button>
+        </div>
+
+        <div class="col-1"></div>
+
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

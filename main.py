@@ -30,6 +30,10 @@ def scrolling():
 def physicaltherapy():
     return render_template("physicaltherapy.html")
 
+@app.route('/scoreboard/')
+def scoreboard():
+    return render_template("scoreboard.html")
+
 # runs the application on the development server
 if __name__ == "__main__":
     app.run(debug=True)
