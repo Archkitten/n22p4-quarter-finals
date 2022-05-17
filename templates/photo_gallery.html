@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+{% extends "layouts/base.html" %}
+{% block body %}
+
+<style>
+    body {
+        background: darkslateblue;
+    }
+    img{
+        height:340px;
+        border-radius: 10px;
+        box-shadow: 0 0 1.2rem rgba(0,0,0,0.25);
+        margin: 10px;
+    }
+    .container{
+
+    }
+    #form {
+        width: 238px;
+        font-family: exo_med;
+    }
+    .btn-btn-danger{
+        height:35px;
+        width: 78px;
+        border-radius: 5px;
+        background: red;
+        color: white;
+        border: none;
+        font-family: exo_med;
+    }
+
+    .btn btn-primary{
+        height:35px;
+        width: 78px;
+        border-radius: 5px;
+        background: blue;
+        color: white;
+        border: none;
+        font-family: exo_med;
+    }
+
+    {##addPic{#}
+    {#    color: #FFFFFF;#}
+    {#    font-size: 30px;#}
+    {#    border: 2px solid white;#}
+    {#    border-radius: 10px;#}
+    {#    position: absolute;#}
+    {#    left:45%#}
+    {#}#}
+
+
+</style>
+<body>
+
+{#<a id="addPic" href="#" onclick="showUpload('f');">Add Picture</a>#}
+
+<div id="container">
+    <form id="form" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <input type="file" class="form-control" id="image">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+    <button onclick="remove()" class="btn-btn-danger">Remove</button>
+    <div id="result"></div>
+</div>
+</body>
+
+<script>
+    var form = document.getElementById('form')
+    var parentDiv = document.getElementById('result')
+    form.addEventListener('submit', function (event) {
+        event.preventDefault()
+        var reader = new FileReader()
+        var name = document.getElementById("image").files[0].name
+
+        reader.addEventListener('load', function() {
+            if (this.result && localStorage) {
+                window.localStorage.setItem(name, this.result)
+                parentDiv.innerHTML = ''
+                showImages()
+            }
+            else {
+                alert("not successful")
+            }
+        })
+
+        reader.readAsDataURL(document.getElementById('image').files[0])
+        console.log(name)
+    })
+
+    function showImages(){
+        for(let i = 0; i < window.localStorage.length; i++) {
+            let res = window.localStorage.getItem(window.localStorage.key(i))
+            var image = new Image()
+            image.src = res;
+
+            parentDiv.appendChild(image)
+
+        }
+    }
+
+    function remove() {
+        window.localStorage.clear()
+        parentDiv.innerHTML = ''
+    }
+
+    showImages()
+
+
+    {#function showUpload(container){#}
+    {#       var e = document.getElementById('container');#}
+    {#       if(e.style.display == 'none')#}
+    {#           e.style.display = 'block';#}
+    {#       else#}
+    {#           e.style.display = 'none';#}
+    {##}
+    {#}#}
+</script>
+
+{% endblock %}
+
+</html>
+

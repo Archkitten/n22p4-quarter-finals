@@ -30,10 +30,10 @@ def ranking():
     return render_template("ranking.html", results=results)
 
 
-@tennis_pg.route('/photos/')
+@tennis_pg.route('/photo_gallery/')
 @login_required
-def photos():
-    return render_template("photos.html")
+def photo_gallery():
+    return render_template("photo_gallery.html")
 
 
 @tennis_pg.route('/roster/', methods=['GET'])
