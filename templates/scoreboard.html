@@ -88,9 +88,20 @@
       else if (homeScore < 40) {
           homeScore += 10;
       }
-      else {
+      // AD system
+      else if (homeScore === "AD") {
           homeScore = "WIN"
       }
+      else if (guestScore === 40) {
+          homeScore = "AD"
+      }
+      else if (guestScore === "AD") {
+          guestScore = 40
+      }
+      else if (guestScore !== "WIN") {
+          homeScore = "WIN"
+      }
+      document.getElementById("guest_score").innerHTML = guestScore;
       document.getElementById("home_score").innerHTML = homeScore;
   }
   function resetHome() {
@@ -106,10 +117,21 @@
       else if (guestScore < 40) {
           guestScore += 10;
       }
-      else {
+      // AD system
+      else if (guestScore === "AD") {
+          guestScore = "WIN"
+      }
+      else if (homeScore === 40) {
+          guestScore = "AD"
+      }
+      else if (homeScore === "AD") {
+          homeScore = 40
+      }
+      else if (homeScore !== "WIN") {
           guestScore = "WIN"
       }
       document.getElementById("guest_score").innerHTML = guestScore;
+      document.getElementById("home_score").innerHTML = homeScore;
   }
   function resetGuest() {
     guestScore = 0;
