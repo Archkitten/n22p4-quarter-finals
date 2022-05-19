@@ -4,6 +4,10 @@ from flask_login import login_required
 
 from cruddy.query import *
 
+logged_in = False
+# USE_SESSION_FOR_NEXT = True
+# next_page = None
+
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
 app_crud = Blueprint('crud', __name__,
                      url_prefix='/crud',
@@ -42,7 +46,10 @@ def crud_login():
         email = request.form.get("email")
         password = request.form.get("password")
         if login(email, password):       # zero index [0] used as email is a tuple
-            return redirect(url_for('crud.crud'))
+            # if request.url = url_for("tennis.photo_gallery"):
+            logged_in = True
+            return redirect(url_for("tennis.photo_gallery"))
+
 
     # if not logged in, show the login page
     return render_template("login.html")

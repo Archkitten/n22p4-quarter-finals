@@ -21,6 +21,7 @@ app.register_blueprint(app_notes)
 def index():
     return render_template("index.html")
 
+
 @app.route('/sports/')
 def sports():
     return render_template("sports.html")
@@ -37,6 +38,11 @@ def physicaltherapy():
 @app.route('/scoreboard/')
 def scoreboard():
     return render_template("scoreboard.html")
+
+@app.route('/workouts/')
+def workouts():
+    return render_template("workouts.html")
+
 
 
 # runs the application on the development server
