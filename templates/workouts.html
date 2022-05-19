@@ -1,0 +1,127 @@
+{% extends "layouts/base.html" %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #488CD5;
+            font-family: exo_med;
+        }
+
+        #main {
+            width: 60%;
+            border: 1px gray solid;
+            margin: auto;
+            padding: 100px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        #header {
+            margin-top: 0px;
+            border: 2px solid black;
+            padding: 100px;
+            text-align: center;
+            height: 250px;
+        }
+
+        label {
+            width: 150px;
+            display: inline-block;
+
+        }
+
+        button {
+            display: block;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div id="header"><h1>What workout should you do?</h1></div>
+
+    <form  id="form1">
+        <p style="font-size: 30px; color: #0d5237; font-family: exo_bold">Which part do you want to train?</p>
+        <label><input type="radio" name="part" id="core" value="1" />Core<br><img src='/static/img/core.jpg/' width='200' /></label><br />
+        <label><input type="radio" name="part" id="arms" value="2" />Arms <br><img src='/static/img/arm.webp/' width='200' /></label><br />
+        <label><input type="radio" name="part" id="legs" value="3" />Legs<br><img src='/static/img/leg.webp/' width='200' /></label><br />
+        <label><input type="radio" name="part" id="shoulder" value="4" />Shoulder<br><img src='/static/img/shoulder.webp/' width='200' /></label>
+
+        <p style="font-size: 30px; color: #0d5237; font-family: exo_bold">What are you training for?</p>
+        <label><input type="radio" name="reason" id="speed" value="1" />Speed/Endurance<br><img src='/static/img/speed.jpg/' width='200' /></label><br />
+        <label><input type="radio" name="reason" id="strength" value="2" />Strength<br><img src='/static/img/strength.jpg/' width='200' /></label><br />
+        <label><input type="radio"  name="reason" id="flexibility" value="3" />Flexibility<br><img src='/static/img/flexibility.webp/' width='200' /></label><br />
+        <label><input type="radio"  name="reason" id="agility" value="4" />Agility/Balance<br><img src='/static/img/agility.jpg/' width='200' /></label>
+
+        <p style="font-size: 30px; color: #0d5237; font-family: exo_bold">How long do you want to exercise for?</p>
+        <label><input type="radio" name="time" id="short" value="1" />10 minutes<br><img src='/static/img/10.png/' width='200' /></label><br />
+        <label><input type="radio" name="time" id="mid" value="2" />20 minutes<br><img src='/static/img/20.png/' width='200' /></label><br />
+        <label><input type="radio" name="time" id="middle" value="3" />30 minutes<br><img src='/static/img/30.jpg/' width='200' /></label><br />
+        <label><input type="radio" name="time" id="long" value="4" />40 minutes<br><img src='/static/img/40.jpg/' width='200' /></label>
+
+
+        <p style="font-size: 30px; color: #0d5237; font-family: exo_bold">What do you like to do better?</p>
+        <label><input type="radio" name="type" id="WT" value="1" />Weight Training<br><img src='/static/img/WT.webp/' width='200' /></label><br />
+        <label><input type="radio" name="type" id="cardio" value="2" />Cardio<br><img src='/static/img/cardio.jpg/' width='200' /></label><br />
+        <label><input type="radio" name="type" id="aerobics" value="3" />Aerobics<br><img src='/static/img/aerobics.jpg/' width='200' /></label><br />
+        <label><input type="radio" name="type" id="RT" value="4" />Resistance Training<br><img src='/static/img/RT.jpg/' width='200' /></label><br />
+
+
+
+        <button type="submit" value="Submit">Submit</button>
+
+    </form>
+
+{#    <p id="answer"></p>#}
+    <p style="font-size: 30px; color: red; font-family: exo_bold" id="answer2"></p>
+</div>
+<script>
+    document.getElementById("form1").onsubmit=function() {
+
+
+        part = parseInt(document.querySelector('input[name = "part"]:checked').value);
+
+        reason = parseInt(document.querySelector('input[name = "reason"]:checked').value);
+
+        time = parseInt(document.querySelector('input[name = "time"]:checked').value);
+
+        type = parseInt(document.querySelector('input[name = "type"]:checked').value);
+
+
+        total= part + reason + time + type;
+
+
+        {#document.getElementById("answer").innerHTML = total;#}
+
+
+        if (total < 5) {document.getElementById("answer2").innerHTML = "Workouts: <br> plate and cable rotations: 4 sets of 10 <br><img src='/static/img/pt.jpg/' width='400' /></label><br /> box drill: 4 sets of 1 minute <br><img src='/static/img/Short-Box-Drill.jpg/' width='400' /></label><br />"};
+
+
+        if(total >=5 && total < 7) {
+            document.getElementById("answer2").innerHTML = "Workouts: <br> goblet squats: 4 sets of 10 <br><img src='/static/img/goblet.webp/' width='400' /></label><br /> single-leg lateral bounds: 4 sets of 10 for each leg <br><img src='/static/img/SL.jpg.crdownload/' width='400' /></label><br /> court suicides: 4 <br><img src='/static/img/suicides.png/' width='400' /></label><br />";
+        }
+
+
+        if(total >=7 && total <9) {
+            document.getElementById("answer2").innerHTML = "Workouts: <br> t-rotation: 4 sets of 10 for each arm <br><img src='/static/img/t-rot.jpg/' width='400' /></label><br /> single-leg medicine ball rotation hip drive: 4 sets of 5 <br><img src='/static/img/med.webp/' width='400' /></label><br /> single leg base land: 4 sets of 10 for each leg <br><img src='/static/img/baseland.jpeg/' width='400' /></label><br /> single arm medicine ball chest throw: 4 sets of 10 <br><img src='/static/img/medthrow.png/' width='400' /></label><br />";
+        }
+
+        if(total >=9) {
+            document.getElementById("answer2").innerHTML = "Workouts: <br> goblet squats: 4 sets of 10 <br><img src='/static/img/goblet.webp/' width='400' /></label><br /> box drill: 6 sets of 1 minute <br><img src='/static/img/Short-Box-Drill.jpg/' width='400' /> court suicides: 4 <br><img src='/static/img/suicides.png/' width='400' /></label><br /> plate and cable rotations: 4 sets of 10 <br><img src='/static/img/pt.jpg/' width='400' /></label><br /> single-leg medicine ball rotation hip drive: 4 sets of 5 <br><img src='/static/img/med.webp/' width='400' /></label><br /> ";
+        }
+
+        return false; // required to not refresh the page; just leave this here
+    }// end the submit function
+</script>
+
+</body>
+</html>
+
+{% endblock %}
+
+
