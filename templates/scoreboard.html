@@ -4,7 +4,7 @@
 
 <style>
     body{
-        background-color: #2D8CDF;
+        background-color: #365940;
     }
 </style>
 
@@ -82,85 +82,183 @@
 <script>
   let homeScore = 0;
   function addHome() {
-    homeScore += 1;
-    document.getElementById("home_score").innerHTML = homeScore;
+      if (homeScore < 30) {
+          homeScore += 15;
+      }
+      else if (homeScore < 40) {
+          homeScore += 10;
+      }
+      // AD system
+      else if (homeScore === "AD") {
+          homeScore = "WIN"
+          detectWin()
+      }
+      else if (guestScore === 40) {
+          homeScore = "AD"
+      }
+      else if (guestScore === "AD") {
+          guestScore = 40
+      }
+      else if (guestScore !== "WIN") {
+          homeScore = "WIN"
+          detectWin()
+      }
+      document.getElementById("guest_score").innerHTML = guestScore;
+      document.getElementById("home_score").innerHTML = homeScore;
+      document.getElementById("games").innerHTML = games;
   }
   function resetHome() {
     homeScore = 0;
     document.getElementById("home_score").innerHTML = homeScore;
+      resetWin()
   }
 
   let guestScore = 0;
   function addGuest() {
-    guestScore += 1;
-    document.getElementById("guest_score").innerHTML = guestScore;
+      if (guestScore < 30) {
+          guestScore += 15;
+      }
+      else if (guestScore < 40) {
+          guestScore += 10;
+      }
+      // AD system
+      else if (guestScore === "AD") {
+          guestScore = "WIN"
+          detectWin()
+      }
+      else if (homeScore === 40) {
+          guestScore = "AD"
+      }
+      else if (homeScore === "AD") {
+          homeScore = 40
+      }
+      else if (homeScore !== "WIN") {
+          guestScore = "WIN"
+          detectWin()
+      }
+      document.getElementById("guest_score").innerHTML = guestScore;
+      document.getElementById("home_score").innerHTML = homeScore;
+      document.getElementById("games").innerHTML = games;
   }
   function resetGuest() {
     guestScore = 0;
     document.getElementById("guest_score").innerHTML = guestScore;
+      resetWin()
+  }
+
+  function resetAll() {
+      resetGuest()
+      resetHome()
+  }
+
+  let games = 0;
+  function resetCount() {
+      games = 0;
+      document.getElementById("games").innerHTML = games;
+  }
+
+  let winAdded = false;
+  function detectWin() {
+      if (winAdded === false) {
+          games += 1
+          winAdded = true
+      }
+  }
+  function resetWin() {
+      if (homeScore !== "WIN" && guestScore !== "WIN") {
+          winAdded = false
+      }
   }
 </script>
 
   <div class="contact" style="min-height: 100vh;">
 
     <!--Start of body-->
-    <div class="container p-3 my-3 bg-dark text-black rounded">
-      <div class="row p-3 my-3 bg-black text-light rounded">
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
-          <p id="home_score" style="font-size:50px">0</p>
+    <div class="container p-3 my-3 bg-black text-black rounded">
+      <div class="row p-3 my-3 bg-black text-black rounded">
+        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+          <p id="home_score" style="font-size:70px; color:cyan">0</p>
         </div>
 
         <div class="col-1"></div>
 
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
-          <p id="timer" style="font-size:60px">00:00</p>
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
+          <p id="timer" style="font-size:70px; color:red">00:00</p>
         </div>
 
         <div class="col-1"></div>
 
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
-          <p id="guest_score" style="font-size:50px">0</p>
+        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+          <p id="guest_score" style="font-size:70px; color:yellow">0</p>
         </div>
 
         <div class="col-1"></div>
 
-        <div class="col-12"><br></div>
-        <div class="col-12"><br></div>
+          <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+              <p id="games" style="font-size:70px; color:white">0</p>
+          </div>
+
+          <div class="col-1"></div>
+
         <div class="col-12"><br></div>
 
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+            <br><br>
           <button class="btn btn-primary" onclick=addHome();>
             Add Home
           </button>
+            <br>
+            <br>
           <button class="btn btn-success" onclick=resetHome();>
-            Reset Home
+            0
           </button>
         </div>
 
         <div class="col-1"></div>
 
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
+            <br>
           <label>Enter Minutes:</label>
           <input id="minutes_html" placeholder="59"><br>
           <label>Enter Seconds:</label>
           <input id="seconds_html" placeholder="59"><br>
+            <br>
           <button class="btn btn-warning" onclick=setTimer();>
             Set Timer
           </button>
+            <br><br>
         </div>
 
         <div class="col-1"></div>
 
-        <div class="col-3 my-3 bg-light text-dark rounded" style="text-align: center" >
+        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+            <br><br>
           <button class="btn btn-danger" onclick=addGuest();>
             Add Guest
           </button>
+            <br>
+            <br>
           <button class="btn btn-secondary" onclick=resetGuest();>
-            Reset Guest
+            0
           </button>
         </div>
 
         <div class="col-1"></div>
+
+          <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+              <br><br>
+              <button class="btn btn-info" onclick=resetAll();>
+                  0 - 0
+              </button>
+              <br>
+              <br><br>
+              <br>
+              <button class="btn btn-warning" onclick=resetCount();>
+                  Reset Games
+              </button>
+          </div>
+
+          <div class="col-1"></div>
 
       </div>
     </div>
