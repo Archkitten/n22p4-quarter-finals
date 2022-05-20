@@ -117,10 +117,143 @@
     {
         height:560px;
         position:absolute;
-        bottom:0px;
+        bottom:40px;
         left:70%;
         transform:translateX(-70%);
         transform:translateY(-40%);
+    }
+    .about-container
+    {
+        width:80%;
+        height:330px;
+        background-color:#FFFFFF;
+        border-radius:20px;
+        box-shadow:2px 2px 12px rgba(0,0,0,0.2);
+        display: flex;
+        margin:-7% auto 20px auto;
+        position:relative;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+    .about-container img{
+        height:250px;
+    }
+    .about-text{
+        width:550px;
+    }
+    .about-text p:nth-child(1)
+    {
+        color:#403e3e;
+        font-family: "Tahoma";
+        font-weight:bold;
+        font-size:23px;
+        line-height:0px;
+    }
+    .about-text p:nth-child(2),
+    .about-text p:nth-child(3),
+    .about-text p:nth-child(4){
+        color:#7e7d7d;
+        font-family:calibri;
+        font-size:20px;
+    }
+    .about-text button{
+        width:120px;
+        height:40px;
+        color:#FFFFFF;
+        outline:none;
+        border:none;
+        font-family:"Tahoma";
+        background-color:#262525
+    }
+    .services {
+        height:600px;
+        background-color:#FFFFFF;
+        padding:2% 10% 0px 10%;
+    }
+    .services-text p:nth-child(1)
+    {
+        font-family: "Tahoma";
+        font-weight:bold;
+        color:#3e3d3d;
+        font-size:30px;
+        line-height:0px;
+    }
+    .services-text p:nth-child(2)
+    {
+        font-family: "Tahoma";
+        font-size:25px;
+        color:#7e7d7d;
+    }
+    .services-text p:nth-child(3)
+    {
+        font-family: "Tahoma";
+        font-size:25px;
+        color:#7e7d7d;
+    }
+    .services-text p:nth-child(4)
+    {
+        font-family: "Tahoma";
+        font-size:25px;
+        color:#7e7d7d;
+    }
+    .services-text {
+        width:500px;
+        margin:50px 0px;
+    }
+    .box-1,.box-2,.box-3
+    {
+        width:300px;
+        height:320px;
+        background-repeat:no-repeat;
+        background-size:cover;
+        box-shadow:2px 2px 12px rgba(0,0,0,0.3);
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+    }
+    .box-container{
+        display:flex;
+        justify-content:space-between;
+    }
+    .box-1{
+        background-image: url("https://southflaortho.com/wp-content/uploads/2020/09/arm-4813365_1280.jpg")
+    }
+    .box-2{
+        background-image: url("https://premierradiologyservices.com/wp-content/uploads/2018/02/Achilles-Tendon-Tear-MRI-and-Abnormal-Photo-1.jpg")
+    }
+    .box-3{
+        background-image: url("https://coloradotennis.org/blast/wp-content/uploads/2018/08/OA-Knee_SU2018.jpg")
+    }
+    .box-1 span,
+    .box-2 span,
+    .box-3 span{
+        width:40px;
+        height:40px;
+        border-radius:50%;
+        background-color:#FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family:"Tahoma";
+        font-weight:bold;
+    }
+    .box-1 p:nth-child(2),
+    .box-2 p:nth-child(2),
+    .box-3 p:nth-child(2){
+        color:#FFFFFF;
+        font-family:"Tahoma";
+        font-size:23px;
+        line-height:0px;
+    }
+    .box-1 p:nth-child(3),
+    .box-2 p:nth-child(3),
+    .box-3 p:nth-child(3){
+        font-family:"Tahoma";
+        text-align:center;
+        width:230px;
+        margin:0px 0px 20px 0px;
+        color:#8f8f8f;
     }
 </style>
 
@@ -146,7 +279,34 @@
             <p></p>
             <button class="pt-btn">Learn about Physical Therapy</button>
         </div>
-        <img src="" class="del-norte">
+        <img src="" alt="tennis-racket" class="del-norte">
     </section>
+    <div class="about-container">
+        <img src="https://media.istockphoto.com/photos/tennis-racket-with-ball-picture-id123497639?k=20&m=123497639&s=612x612&w=0&h=C9wqLu2nVjTRjLusOSeVzTF3wJ-D-MkeOcR_DqKs-jo=">
+        <div class="about-text">
+            <p>Common Tennis Injuries</p>
+            <p>Torn Rotator Cuff</p>
+            <p>Achilles Tendon Rupture</p>
+            <p>Tennis Knee</p>
+            <button>Learn More</button>
+        </div>
+    </div>
+    <div class="services">
+    <div class="services-text">
+        <p>Common Tennis Injuries</p>
+        <p>Torn Rotator Cuff</p>
+        <p>Achilles Tendon Rupture</p>
+        <p>Tennis Knee</p>
+    </div>
+        <div class="box-container">
+            <div class="box-1"></div>
+            <span>1</span>
+            <p class="heading">Torn Rotator Cuff</p>
+            <p class="details">Details about TRC</p>
+            <button>Learn More</button>
+            <div class="box-2"></div>
+            <div class="box-3"></div>
+        </div>
+    </div>
 </body>
 </html>
