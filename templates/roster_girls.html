@@ -6,73 +6,76 @@
 
 {% block body %}
 
-{#    <iframe src="https://app.universaltennis.com/schools/3810"; width=100%></iframe>#}
+    {#    <iframe src="https://app.universaltennis.com/schools/3810"; width=100%></iframe>#}
 
-{% set roster = results.roster %}
+    {% set roster = results.roster %}
 
-<h1 style="font-family: exo_bold; color: white; text-align: center">Girls Player Roster</h1>
-    <a style=" border: 2px solid white;border-radius: 25px; font-family: exo_med; position: absolute; left: 10%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:120px; padding-left: 20px;" class="nav-link" href={{ url_for('tennis.roster') }}>Boys</a>
+    <h1 style="font-family: exo_bold; color: white; text-align: center">Girls Player Roster</h1>
+    <a style=" border: 2px solid white;border-radius: 25px; font-family: exo_med; position: absolute; left: 10%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:120px; padding-left: 20px;"
+       class="nav-link" href={{ url_for('tennis.roster') }}>Boys</a>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-<div class="col-12 mainbox center-block">
-    <table id="myTable" style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #365940">
-        <tr>
-            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
-            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
-            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
-            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
-            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
-        </tr>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    <div class="col-12 mainbox center-block">
+        <table id="myTable"
+               style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #365940">
+            <tr>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
+            </tr>
 
-        {% for player in roster %}
-        <tr style="background-color: #365940">
-            <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
-            <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
-            <td>{{ player.singlesUtr }}</td>
-            <td>{{ player.doublesUtr }}</td>
-            <td>{{ player.nationality }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+            {% for player in roster %}
+                <tr style="background-color: #365940">
+                    <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
+                    <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
+                    <td>{{ player.singlesUtr }}</td>
+                    <td>{{ player.doublesUtr }}</td>
+                    <td>{{ player.nationality }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 
-<style>
-    body {
-        background: #284F73;
-    }
+    <style>
+        body {
+            background: #284F73;
+        }
 
-    #myInput {
-        position: absolute;
-        left: 26%;
-        width: 50%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-    }
-</style>
+        #myInput {
+            position: absolute;
+            left: 26%;
+            width: 50%;
+            font-size: 16px;
+            padding: 12px 20px 12px 40px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+    </style>
 
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
+
             }
         }
-    }
 
-</script>
+    </script>
 
 
 

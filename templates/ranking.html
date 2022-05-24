@@ -22,15 +22,12 @@
                     <th>Country</th>
                 </tr>
 
-                {% for player in players %}
-                    <tr>
-                        {% set logo = player["data"]["team"] %}
-                        <td><img src="{{logo}}"></td>
-                        {% set teamname = team.name %}
-                        <td>{{teamname}}</td>
-                        {% set country = team.country %}
-                        <td>{{country}}</td>
-                    </tr>
+
+                {% for d in players.data %}
+                        <tr>
+                            <td>{{ d.ranking }}   {{ d.team.name_full }}</td>
+                        </tr>
+
                 {% endfor %}
             </table>
 
