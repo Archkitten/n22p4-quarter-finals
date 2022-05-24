@@ -17,16 +17,29 @@
         <div class="col-12 mainbox center-block">
             <table style="margin: 2%">
                 <tr>
-                    <th>Logo</th>
-                    <th>Team Name</th>
+                    <th>Ranking</th>
+                    <th>Name Code</th>
+                    <th>Name</th>
+                    <th>Points</th>
                     <th>Country</th>
+{#                    <th>Flag</th>#}
+                    <th>Tournaments</th>
+
                 </tr>
 
 
                 {% for d in players.data %}
-                    <tr>
-                        <td>{{ d.ranking }}   {{ d.team.name_full }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ d.ranking }}</td>
+                            <td>{{ d.team.name_code }}</td>
+                            <td>{{ d.team.name_full }}</td>
+                            <td>{{ d.points }}</td>
+{#                            {% set logo = d.team.flag %}#}
+{#                            <td><img src="{{logo}}"></td>#}
+                            <td>{{ d.team.country }}</td>
+                            <td>{{ d.tournaments }}</td>
+
+                        </tr>
 
                 {% endfor %}
             </table>
