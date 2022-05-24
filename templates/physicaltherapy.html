@@ -1,3 +1,7 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+
+
 <style>
     body
     {
@@ -28,7 +32,7 @@
         justify-content: space-between;
         align-items:center;
         height:60px;
-        background-color:#FFFFFF;
+        background-color: #2451f2;
         box-shadow:2px 2px 12px rgba(0,0,0,0.2);
         padding:0px 5%;
     }
@@ -52,7 +56,7 @@
     .active
     {
         font-weight:bold;
-        color:#2d2a2a;
+        color:white;
         font-size:30px;
         font-family:"Tahoma";
     }
@@ -196,56 +200,45 @@
         font-size:25px;
         color:#7e7d7d;
     }
-    .services-text {
+    .services-text{
         width:500px;
         margin:50px 0px;
     }
     .box-1,.box-2,.box-3
     {
-        width:300px;
-        height:320px;
+        width:400px;
+        height:420px;
         background-repeat:no-repeat;
         background-size:cover;
         box-shadow:2px 2px 12px rgba(0,0,0,0.3);
-        display: flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
     }
     .box-container{
-        display:flex;
+        display: flex;
         justify-content:space-between;
     }
     .box-1{
-        background-image: url("https://southflaortho.com/wp-content/uploads/2020/09/arm-4813365_1280.jpg")
+        background-image:url("data:image/jpeg;base64,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")
     }
     .box-2{
-        background-image: url("https://premierradiologyservices.com/wp-content/uploads/2018/02/Achilles-Tendon-Tear-MRI-and-Abnormal-Photo-1.jpg")
+        background-image:url("https://radsource.us/wp-content/uploads/2004/12/1b.jpg")
     }
     .box-3{
-        background-image: url("https://coloradotennis.org/blast/wp-content/uploads/2018/08/OA-Knee_SU2018.jpg")
+        background-image:url("https://prod-images-static.radiopaedia.org/images/7421934/8c8fd39c8b66a81b1992b0c94de9dc_big_gallery.jpg")
     }
     .box-1 span,
     .box-2 span,
     .box-3 span{
         width:40px;
         height:40px;
-        border-radius:50%;
-        background-color:#FFFFFF;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        border-radius:50px;
+        background-color:white;
+        display:flex;
+        justify-content:center;
+        align-items:center;
         font-family:"Tahoma";
         font-weight:bold;
     }
-    .box-1 p:nth-child(2),
-    .box-2 p:nth-child(2),
-    .box-3 p:nth-child(2){
-        color:#FFFFFF;
-        font-family:"Tahoma";
-        font-size:23px;
-        line-height:0px;
-    }
+
     .box-1 p:nth-child(3),
     .box-2 p:nth-child(3),
     .box-3 p:nth-child(3){
@@ -253,7 +246,14 @@
         text-align:center;
         width:230px;
         margin:0px 0px 20px 0px;
-        color:#8f8f8f;
+        color:#8f8f8f
+    }
+    .box-1 button,
+    .box-2 button,
+    .box-3 button{
+        width:100px;
+        height:30px;
+        background-color:#FFFFFF;
     }
 </style>
 
@@ -279,34 +279,46 @@
             <p></p>
             <button class="pt-btn">Learn about Physical Therapy</button>
         </div>
-        <img src="" alt="tennis-racket" class="del-norte">
     </section>
     <div class="about-container">
         <img src="https://media.istockphoto.com/photos/tennis-racket-with-ball-picture-id123497639?k=20&m=123497639&s=612x612&w=0&h=C9wqLu2nVjTRjLusOSeVzTF3wJ-D-MkeOcR_DqKs-jo=">
         <div class="about-text">
-            <p>Common Tennis Injuries</p>
-            <p>Torn Rotator Cuff</p>
-            <p>Achilles Tendon Rupture</p>
-            <p>Tennis Knee</p>
+            <p>About Tennis Injuries</p>
+            <p>In Del Norte, it is important that we encourage athletes to recognize common injuries and its preventions and treatments. In tennis, injuries are especially common. Often times, students will receive an injury and overlook it, but it may continue to worsen over time.</p>
             <button>Learn More</button>
         </div>
     </div>
     <div class="services">
     <div class="services-text">
         <p>Common Tennis Injuries</p>
-        <p>Torn Rotator Cuff</p>
-        <p>Achilles Tendon Rupture</p>
-        <p>Tennis Knee</p>
+        <p>Torn Rotator Cuff (1)</p>
+        <p>Achilles Tendon Rupture (2)</p>
+        <p>Tennis Elbow (3)</p>
     </div>
         <div class="box-container">
-            <div class="box-1"></div>
-            <span>1</span>
-            <p class="heading">Torn Rotator Cuff</p>
-            <p class="details">Details about TRC</p>
-            <button>Learn More</button>
-            <div class="box-2"></div>
-            <div class="box-3"></div>
+            <div class="box-1">
+                <span>1</span>
+                <p class="heading" style="color: white; font-size:1.25vw; font-family: Tahoma">A rotator cuff tear often occurs in people who repeatedly perform the same shoulder motions.
+                    Symptoms include shoulder pain and weakness. Treatment includes rest, medication, physical therapy, corticosteroid injections, and possibly surgery.
+                </p>
+                <button>Read More</button>
+            </div>
+            <div class="box-2">
+                <span>2</span>
+                <p class="heading" style="color: white; font-size:1vw; font-family: Tahoma">Achilles (uh-KILL-eez) tendon rupture is an injury that affects the back of your lower leg. It mainly occurs in people playing recreational sports, but it can happen to anyone.
+                    The Achilles tendon is a strong fibrous cord that connects the muscles in the back of your calf to your heel bone. If you overstretch your Achilles tendon, it can tear (rupture) completely or just partially.
+                </p>
+                <button>Read More</button>
+            </div>
+            <div class="box-3">
+                <span>3</span>
+                <p class="heading" style="color: white; font-size:1vw; font-family: Tahoma">Lateral epicondylitis, or tennis elbow, is swelling or tearing of the tendons that bend your wrist backward away from your palm. It's caused by repetitive motion of the forearm muscles, which attach to the outside of your elbow. The muscles and tendons become sore from excessive strain.
+                </p>
+                <button>Read More</button>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
+{% endblock %}
