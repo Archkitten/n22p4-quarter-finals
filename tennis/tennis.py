@@ -6,7 +6,7 @@ from cruddy.app_crud import login_required
 
 tennis_pg = Blueprint('tennis', __name__,
                       url_prefix='/tennis/',
-                      template_folder='templates',
+                      template_folder='templates/tennis',
                       static_folder='static', static_url_path='static/tennis')
 
 
@@ -49,9 +49,16 @@ def roster():
     #     "Authorization": "Bearer {JWT_TOKEN}"
     # }
 
+
+
+
     response = requests.get(url, headers=head)
 
     results = json.loads(response.content.decode("utf-8"))
+
+
+
+
 
     # print(response)
     # print(results)

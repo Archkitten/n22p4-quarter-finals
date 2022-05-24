@@ -10,7 +10,7 @@ logged_in = False
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
 app_crud = Blueprint('crud', __name__,
-                     url_prefix='/crud',
+                     url_prefix='/team',
                      template_folder='templates/cruddy/',
                      static_folder='static',
                      static_url_path='static')
@@ -35,31 +35,37 @@ def crud():
 @login_manager.unauthorized_handler
 def unauthorized():
     """Redirect unauthorized users to Login page."""
+    global next_page
+    next_page = request.endpoint
     return redirect(url_for('crud.crud_login'))
 
 
 # if login url, show phones table only
+# if login url, show phones table only
 @app_crud.route('/login/', methods=["GET", "POST"])
 def crud_login():
-    # obtains form inputs and fulfills login requirements
+    global next_page
     if request.form:
         email = request.form.get("email")
         password = request.form.get("password")
-        if login(email, password):       # zero index [0] used as email is a tuple
-            # if request.url = url_for("tennis.photo_gallery"):
-            logged_in = True
-            return redirect(url_for("tennis.photo_gallery"))
-
+        if login(email, password):
+            try:  # try to redirect to next page
+                temp = next_page
+                print(temp)
+                next_page = None
+                return redirect(url_for(temp))
+            except:  # any failure goes to home page
+                return redirect(url_for('index'))
 
     # if not logged in, show the login page
     return render_template("login.html")
+
 
 @app_crud.route('/logout')
 @login_required
 def crud_logout():
     logout_user()
     return redirect(url_for('crud.crud_login'))
-
 
 
 @app_crud.route('/authorize/', methods=["GET", "POST"])
@@ -71,8 +77,8 @@ def crud_authorize():
         email = request.form.get("email")
         phone = request.form.get("phone")
         password1 = request.form.get("password1")
-        password2 = request.form.get("password1")           # password should be verified
-        if authorize(user_name, email, phone, password1):    # zero index [0] used as user_name and email are type tuple
+        password2 = request.form.get("password1")  # password should be verified
+        if authorize(user_name, email, phone, password1):  # zero index [0] used as user_name and email are type tuple
             return redirect(url_for('crud.crud_login'))
     # show the auth user page if the above fails for some reason
     return render_template("authorize.html")
