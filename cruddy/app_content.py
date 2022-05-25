@@ -44,10 +44,8 @@ Hack #3 establish a strategy to manage data being stored through Amazon S3 bucke
 # AWS S3 Object Container is a system used to manage content
 # ... S3 Bucket Concept: https://www.youtube.com/watch?v=-VVC7uTNJX8
 
-
-# A global variable is used to provide feedback for session to users, but is considered short term solution
 files_uploaded = []
-
+# A global variable is used to provide feedback for session to users, but is considered short term solution
 
 # Page to upload content page
 @app_content.route('/')
