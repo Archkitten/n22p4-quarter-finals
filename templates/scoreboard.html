@@ -176,7 +176,7 @@
     <!--Start of body-->
     <div class="container p-3 my-3 bg-black text-black rounded">
       <div class="row p-3 my-3 bg-black text-black rounded">
-        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
           <p id="home_score" style="font-size:70px; color:cyan">0</p>
         </div>
 
@@ -188,21 +188,15 @@
 
         <div class="col-1"></div>
 
-        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
           <p id="guest_score" style="font-size:70px; color:yellow">0</p>
         </div>
-
-        <div class="col-1"></div>
-
-          <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
-              <p id="games" style="font-size:70px; color:white">0</p>
-          </div>
 
           <div class="col-1"></div>
 
         <div class="col-12"><br></div>
 
-        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
             <br><br>
           <button class="btn btn-primary" onclick=addHome();>
             Add Home
@@ -231,7 +225,7 @@
 
         <div class="col-1"></div>
 
-        <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+        <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
             <br><br>
           <button class="btn btn-danger" onclick=addGuest();>
             Add Guest
@@ -243,22 +237,29 @@
           </button>
         </div>
 
-        <div class="col-1"></div>
+          <div class="col-1"></div>
 
-          <div class="col-2 my-3 bg-dark text-light rounded" style="text-align: center" >
+          <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
               <br><br>
               <button class="btn btn-info" onclick=resetAll();>
-                  0 - 0
-              </button>
-              <br>
-              <br><br>
-              <br>
-              <button class="btn btn-warning" onclick=resetCount();>
-                  Reset Games
+                  Reset Scores
               </button>
           </div>
 
           <div class="col-1"></div>
+
+          <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
+              <p id="games" style="font-size:70px; color:white">0</p>
+          </div>
+
+          <div class="col-1"></div>
+
+          <div class="col-3 my-3 bg-dark text-light rounded" style="text-align: center" >
+              <br><br>
+              <button class="btn btn-warning" onclick=resetCount();>
+                  Reset Games
+              </button>
+          </div>
 
       </div>
     </div>
