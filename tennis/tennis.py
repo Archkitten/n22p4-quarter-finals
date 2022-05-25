@@ -24,8 +24,6 @@ def ranking():
     response = requests.request("GET", url, headers=headers, params=querystring)
 
     results = json.loads(response.content.decode("utf-8"))
-
-    print(response.text)
     print(results)
     return render_template("ranking.html", results=results)
 
@@ -43,7 +41,8 @@ def roster():
 
 
     url = "https://app.universaltennis.com/api/v1/club/3810/school"
-
+    # 3810 for boys
+    # 3811 for girls
 
     # headers = {
     #     "Authorization": "Bearer {JWT_TOKEN}"
