@@ -1,101 +1,88 @@
 {% extends "layouts/base.html" %}
 
-{% set project = "Roster Page" %}
+<!DOCTYPE html>
 
-<!- This is a replacement block for Body in base.html -->
 
 {% block body %}
-
-    {#    <iframe src="https://app.universaltennis.com/schools/3810"; width=100%></iframe>#}
-
     {% set roster = results.roster %}
 
-    <h1 style="font-family: exo_bold; color: white; text-align: center">Boys Player Roster</h1>
-    <a style=" border: 2px solid white;border-radius: 25px; font-family: exo_med; position: absolute; left: 10%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:120px; padding-left: 20px;"
-       class="nav-link" href={{ url_for('tennis.roster_girls') }}>Girls</a>
-    <p>
-    </p>
-    <head>
-        <title>Boys Roster</title>
-{#        <script type="text/javascript" src="/path/to/jquery-latest.js"></script>#}
-{#        <script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script>#}
-
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-        <div class="col-12 mainbox center-block">
-            <table id="myTable"
-                   style="margin: 5%; font-family:exo_med; color:white; width: 85%; position: absolute; left:40px; text-align: center; border: 20px solid white; border-collapse: collapse; background-color: #284F73">
-                <thead>
-                <tr>
-                    <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
-                    <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
-                    <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
-                    <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
-                    <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for player in roster %}
-                    <tr style="background-color: #284F73">
-                        <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
-                        <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
-                        <td id="td">{{ player.singlesUtr }}</td>
-                        <td>{{ player.doublesUtr }}</td>
-                        <td>{{ player.nationality }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </head>
     <style>
         body {
-            background: #365940;
-        }
-
-        #myInput {
-            position: absolute;
-            left: 26%;
-            width: 50%;
-            font-size: 16px;
-            padding: 12px 20px 12px 40px;
-            border: 1px solid #ddd;
-            margin-bottom: 12px;
+            background: darkslateblue;
         }
     </style>
 
-    <script>
-        function myFunction() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
+<div class="container">
+    <h3>
+
+        <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+    </h3>
+    <table class="table table-striped mt32 customers-list">
+        <thead>
+        <tr>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
+            <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for player in roster %}
+            <tr>
+                <td style="font-family: exo_med; color: #fff; font-size: 20px;">{{ player.displayName }}</td>
+                <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
+                <td>{{ player.singlesUtr }}</td>
+                <td>{{ player.doublesUtr }}</td>
+                <td>{{ player.nationality }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    (function(document) {
+        'use strict';
+
+        var TableFilter = (function(myArray) {
+            var search_input;
+
+            function _onInputSearch(e) {
+                search_input = e.target;
+                var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                myArray.forEach.call(tables, function(table) {
+                    myArray.forEach.call(table.tBodies, function(tbody) {
+                        myArray.forEach.call(tbody.rows, function(row) {
+                            var text_content = row.textContent.toLowerCase();
+                            var search_val = search_input.value.toLowerCase();
+                            row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                        });
+                    });
+                });
             }
-        }
 
-        {#$(document).ready(function () {#}
-        {#        $("#myTable").tablesorter();#}
-        {#    }#}
-        {#);#}
-        {##}
-        {#$(document).ready(function () {#}
-        {#        $("#myTable").tablesorter({sortList: [[0, 0], [1, 0]]});#}
-        {#    }#}
-        {#);#}
+            return {
+                init: function() {
+                    var inputs = document.getElementsByClassName('search-input');
+                    myArray.forEach.call(inputs, function(input) {
+                        input.oninput = _onInputSearch;
+                    });
+                }
+            };
+        })(Array.prototype);
 
+        document.addEventListener('readystatechange', function() {
+            if (document.readyState === 'complete') {
+                TableFilter.init();
+            }
+        });
 
-    </script>
-
+    })(document);
+</script>
 
 
 

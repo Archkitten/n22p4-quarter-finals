@@ -6,12 +6,14 @@ from cruddy.app_crud_api import app_crud_api
 from sportslocalapi.sportapi import sportapi_bp
 from tennis.tennis import tennis_pg
 from cruddy.app_notes import app_notes
+from cruddy.app_content import app_content
 
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
 app.register_blueprint(app_crud_api)
 app.register_blueprint(tennis_pg)
 app.register_blueprint(app_notes)
+app.register_blueprint(app_content)
 
 
 @app.route('/')
@@ -44,6 +46,14 @@ def workouts():
 @app.route('/rules/')
 def rules():
     return render_template("rules.html")
+
+@app.route('/contactus/')
+def contactus():
+    return render_template("contactus.html")
+
+@app.route('/calendar/')
+def calendar():
+    return render_template("calendar.html")
 
 
 # runs the application on the development server

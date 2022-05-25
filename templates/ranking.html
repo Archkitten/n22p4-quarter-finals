@@ -1,29 +1,29 @@
-!-- Extending the predefined project layout -->
+
 {% extends "layouts/base.html" %}
 
 <!- This variable sets name of browser tab  -->
-{% set project = "Rankings Page" %}
-
+<title>Rankings Page</title>
 <!- This is a replacement block for Body in base.html -->
 {% block body %}
 
     {% set players = results %}
 
-    <div class="-block" style="margin: 2% 25% 5%; font-family: gilroy,serif;">
-        <div class="col-12" style="text-align: center;">
-            <h1>Live ATP Rankings</h1>
-        </div>
+    <div class="col-12" style="text-align: center; ">
+        <h1 style="font-family: exo_bold">Live ATP Rankings</h1>
+    </div>
+    <div class="-block" style="margin: 2% 25% 5%; position: absolute; left:-330px;">
 
         <div class="col-12 mainbox center-block">
-            <table style="margin: 2%">
+            <table style="margin: 5%; font-family:exo_med; color:white; width: 120%; text-align: center; border: 10px solid white; background-color: #2A4284">
+                <thead>
                 <tr>
-                    <th>Ranking</th>
-                    <th>Name Code</th>
-                    <th>Name</th>
-                    <th>Points</th>
-                    <th>Country</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Ranking</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Name Code</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Points</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Country</th>
 {#                    <th>Flag</th>#}
-                    <th>Tournaments</th>
+                    <th style= "padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">Tournaments</th>
 
                 </tr>
 
@@ -48,6 +48,28 @@
 
     </div>
 
+
+    <style>
+    body {
+        background-color: darkslateblue;
+        color: #FFFFFF;
+
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: darkslateblue;
+    }
+    </style>
 
 
 

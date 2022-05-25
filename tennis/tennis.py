@@ -25,8 +25,8 @@ def ranking():
 
     results = json.loads(response.content.decode("utf-8"))
 
-    print(response.text)
-    print(results)
+    # print(response.text)
+    # print(results)
     return render_template("ranking.html", results=results)
 
 
