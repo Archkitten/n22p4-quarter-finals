@@ -45,6 +45,14 @@ def workouts():
 def rules():
     return render_template("rules.html")
 
+@app.route('/contactus/')
+def contactus():
+    return render_template("contactus.html")
+
+@app.route('/calendar/')
+def calendar():
+    return render_template("calendar.html")
+
 
 # runs the application on the development server
 if __name__ == "__main__":
