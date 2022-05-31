@@ -51,6 +51,77 @@ class Notes(db.Model):
         }
 
 
+class Matches(UserMixin, db.Model):
+    __tablename__ = 'matches'
+
+    # Define the Users schema
+    gameID = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(255), unique=False, nullable=False)
+    team1 = db.Column(db.String(255), unique=True, nullable=False)
+    team2 = db.Column(db.String(255), unique=True, nullable=False)
+    winner = db.Column(db.String(255), unique=True, nullable=False)
+    score = db.Column(db.String(255), unique=True, nullable=False)
+
+    url = db.Column(db.String(255), unique=True, nullable=False)
+
+    # constructor of a User object, initializes of instance variables within object
+    def __init__(self, date, team1, team2, winner, url, score):
+        self.date = date
+        self.team1 = team1
+        self.team2 = team2
+        self.winner = winner
+        self.score = score
+        self.url = url
+
+    # returns a string representation of object, similar to java toString()
+    def __repr__(self):
+        return "Matches(" + str(self.gameID) + "," + self.date + "," + str(self.team1) + "," + str(
+            self.team2) + "," + str(self.winner) + "," + str(self.winner) + "," + str(self.winner) + ")"
+
+    # CRUD create/add a new record to the table
+    # returns self or None on error
+    def create(self):
+        try:
+            # creates a person object from Users(db.Model) class, passes initializers
+            db.session.add(self)  # add prepares to persist person object to Users table
+            db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
+            return self
+        except IntegrityError:
+            db.session.remove()
+            return None
+
+    # CRUD read converts self to dictionary
+    # returns dictionary
+    def read(self):
+        return {
+            "gameID": self.gameID,
+            "date": self.date,
+            "team1": self.team1,
+            "team2": self.team2,
+            "winner": self.winner,
+            "score": self.score,
+            "url": self.url,
+
+        }
+
+    # CRUD update: updates users name, password, phone
+    # returns self
+    def update(self, date):
+        """only updates values with length"""
+        if len(date) > 0:
+            self.date = date
+
+        db.session.commit()
+        return self
+
+    # CRUD delete: remove self
+    # None
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return None
+
+
 # Define the Users table within the model
 # -- Object Relational Mapping (ORM) is the key concept of SQLAlchemy
 # -- a.) db.Model is like an inner layer of the onion in ORM
@@ -169,6 +240,21 @@ def model_builder():
             db.session.remove()
             print(f"Records exist, duplicate email, or error: {row.email}")
 
+    g1 = Matches(date='3/1/2022', team1='Del Norte', team2='Mission Hills', winner="Del Norte", score="16-2", url="https://app.universaltennis.com/events/92708")
+    table2 = [g1]
+
+
+
+    for row1 in table2:
+        try:
+            '''add user/note data to table'''
+            db.session.add(row1)
+            db.session.commit()
+        except IntegrityError:
+            '''fails with bad or duplicate data'''
+            db.session.remove()
+            print("Faulty match")
+
 
 # Looks into database
 def model_driver():
@@ -195,6 +281,13 @@ def model_driver():
             print(note.read())
         print("-" * 85)
         print()
+
+        games = Matches.query
+    for game in games:
+        print("Game:" + "-" * 81)
+        print(game.read())
+        print("Games" + "-" * 80)
+
 
 
 if __name__ == "__main__":

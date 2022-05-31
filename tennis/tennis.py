@@ -38,7 +38,7 @@ def photo_gallery():
 
 @tennis_pg.route('/roster/', methods=['GET'])
 def roster():
-    myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjU1MzEyIiwiZW1haWwiOiJnaXJpc2hraGFuZGVsd2FsQGhvdG1haWwuY29tIiwiVmVyc2lvbiI6IjEiLCJEZXZpY2VMb2dpbklkIjoiMTA2NTk3NTUiLCJuYmYiOjE2NTEwODg4MzEsImV4cCI6MTY1MzY4MDgzMSwiaWF0IjoxNjUxMDg4ODMxfQ.nGPOJ_wpYC7-eMgQb6deZqCGWRZNMvnTf5VOLhNJOqQ'
+    myToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNZW1iZXJJZCI6IjU1MzEyIiwiZW1haWwiOiJnaXJpc2hraGFuZGVsd2FsQGhvdG1haWwuY29tIiwiVmVyc2lvbiI6IjEiLCJEZXZpY2VMb2dpbklkIjoiMTEwMjY5NTUiLCJuYmYiOjE2NTQwMjIyNDYsImV4cCI6MTY1NjYxNDI0NiwiaWF0IjoxNjU0MDIyMjQ2fQ.DomFbAYyQa1igyohckpiBoyaYZRNiYP6HDodRSZSR5s.'
     head = {'Authorization': 'token {}'.format(myToken)}
 
 

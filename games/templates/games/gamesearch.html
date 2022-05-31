@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- Preparing search using asynchronous "fetch" (no page reload, no wait)
+inspiration from https://www.youtube.com/watch?v=QKcVjdLEX_s
+-->
+{% extends "layouts/base.html" %}
+
+{% set project = "Database Search" %}
+{% block head %}
+    <title>SQL search</title>
+{% endblock %}
+
+{% block body %}
+    <style>
+        table, td, th {
+            border: 10px solid #ffffff;
+            padding: 50px;
+        }
+        td, th {
+            text-align:center;
+            color: #ffffff;
+        }
+        table{
+            width: 100%;
+            margin: auto;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .bg-image {
+            /* The image used */
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzu66_jZ9n-kOFexgTlz23k0gH6izys6R91Q&usqp=CAU");
+
+        {# another potential image, check with team which one to use: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaWiAfnPUQDlvL7Sx4d5d8z8oKmkaXb4SAQw&usqp=CAU#}
+            /* Add the blur effect */
+        {#filter: blur(8px);#}
+        {#-webkit-filter: blur(8px);#}
+
+            /* Full height */
+            height: 5000px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Position text in the middle of the page/image
+<    </style>
+
+    <div class="bg-image">
+        <!-- heading -->
+        <header class="pb-3 mb-4 border-bottom">
+            <a href="" class="d-flex align-items-center text-light text-decoration-none">
+                <span class="fs-4">Search Database</span>
+            </a>
+        </header>
+        <!-- search box -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="gameterm" placeholder="Search By Airlines, Times, or Airports">
+                            <label></label> <!-- used for spacer -->
+                        </div>
+                        <div align="center">
+                            <button class="btn btn-primary bg-secondary" onclick="search_data();" >Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- result of search -->
+        <div class="container">
+            <div class="row" id="result">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function search_data() {
+            // fetch standard requires data set to a name-value pair
+            const term = document.getElementById("gameterm");
+            const body = {
+                term: term.value
+            };
+
+            // fetch call with header options
+            fetch('/games/search/term/', {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify(body),
+                cache: "no-cache",
+                headers: new Headers({
+                    "content-type": "application/json"
+                })
+            })
+                // async then replies with response header
+                .then(function (response) {
+                    // prepare HTML search result container for new output
+                    const resultContainer = document.getElementById("result");
+                    // clean up from previous search
+                    while (resultContainer.firstChild) {
+                        resultContainer.removeChild(resultContainer.firstChild);
+                    }
+                    // trap error response from Web API
+                    if (response.status !== 200) {
+                        const errorMsg = 'Database response error: ' + response.status;
+                        console.log(errorMsg);
+                        const div = document.createElement("div");
+                        div.innerHTML = errorMsg;
+                        resultContainer.appendChild(div);
+                        return;
+                    }
+                    // response contains valid result
+
+
+                    response.json().then(function(data) {
+                        // loop through JSON and build HTML output
+                        const div = document.createElement("div");
+                        let table = "<table>"
+                        for (let i = 0; i < data.length; i++) {
+                            table += "<tr><td>" + data[i].date + "</td><td>" + data[i].team1 + "</td><td>"+ data[i].team2 + "</td><td>" + data[i].winner + "</td><td>" + data[i].score + "</td></tr>"
+                            div.innerHTML = table
+                            resultContainer.appendChild(div);
+                        }
+                    })
+                })
+        }
+    </script>
+
+{% endblock %}
