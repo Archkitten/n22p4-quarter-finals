@@ -7,6 +7,7 @@ from sportslocalapi.sportapi import sportapi_bp
 from tennis.tennis import tennis_pg
 from cruddy.app_notes import app_notes
 from cruddy.app_content import app_content
+from games.app_games import app_games
 
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
@@ -14,6 +15,7 @@ app.register_blueprint(app_crud_api)
 app.register_blueprint(tennis_pg)
 app.register_blueprint(app_notes)
 app.register_blueprint(app_content)
+app.register_blueprint(app_games)
 
 @app.route('/')
 def index():
