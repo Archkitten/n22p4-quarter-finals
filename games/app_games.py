@@ -56,19 +56,3 @@ def search():
     return render_template("gamesearch.html")
 
 
-# Search request and response
-@app_games.route('/searchgame/term', methods=["POST"])
-def search_term():
-    """ obtain term/search request """
-    print("route test")
-    req = request.get_json()
-    term = req['term']
-    print(term)
-    json_ready = games_ilike(term)
-    json = jsonify(json_ready)
-    response = make_response(json, 200)
-    return response
-
-
-# Search request and response
-

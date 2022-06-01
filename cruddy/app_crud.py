@@ -155,12 +155,6 @@ def search_term():
     return response
 
 
-# Search Form
-@app_crud.route('/gamesearch/')
-def gamesearch():
-    """loads form to search Users data"""
-
-    return render_template("gamesearch.html")
 
 
 @app_crud.route('/pleasework/term', methods=["POST"])
