@@ -43,18 +43,18 @@ def sqlquery_2_list(rows):
 
 
 # SQLAlchemy extract games from database matching term
+# SQLAlchemy extract users from database matching term
 def games_ilike(term):
-    """filter games table by term into JSON list (ordered by game.name)"""
+    """filter Users table by term into JSON list (ordered by User.name)"""
     term = "%{}%".format(term)  # "ilike" is case insensitive and requires wrapped  %term%
-    table = Matches.query.order_by(Matches.date).filter(
-        (Matches.team1.ilike(term)) | (Matches.team2.ilike(term)) | (Matches.winnet.ilike(term)) | (
-            Matches.team2.score(term)))
-    return [peep.read() for peep in table]
+    table = Matches.query.order_by(Matches.date).filter((Matches.date.ilike(term)) | (Matches.team1.ilike(term)))
+    json_ready = [peep.read() for peep in table]
+    return json_ready
 
 
-# SQLAlchemy extract single game from database matching ID
+# SQLAlchemy extract single user from database matching ID
 def game_by_id(gameid):
-    """finds game in table matching gameid """
+    """finds User in table matching userid """
     return Matches.query.filter_by(gameID=gameid).first()
 
 

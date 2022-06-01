@@ -57,15 +57,14 @@ class Matches(UserMixin, db.Model):
     # Define the Users schema
     gameID = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(255), unique=False, nullable=False)
-    team1 = db.Column(db.String(255), unique=True, nullable=False)
-    team2 = db.Column(db.String(255), unique=True, nullable=False)
-    winner = db.Column(db.String(255), unique=True, nullable=False)
-    score = db.Column(db.String(255), unique=True, nullable=False)
-
-    url = db.Column(db.String(255), unique=True, nullable=False)
+    team1 = db.Column(db.String(255), unique=False, nullable=False)
+    team2 = db.Column(db.String(255), unique=False, nullable=False)
+    winner = db.Column(db.String(255), unique=False, nullable=False)
+    score = db.Column(db.String(255), unique=False, nullable=False)
+    url = db.Column(db.String(255), unique=False, nullable=False)
 
     # constructor of a User object, initializes of instance variables within object
-    def __init__(self, date, team1, team2, winner, url, score):
+    def __init__(self, date, team1, team2, winner, score, url):
         self.date = date
         self.team1 = team1
         self.team2 = team2
@@ -76,7 +75,7 @@ class Matches(UserMixin, db.Model):
     # returns a string representation of object, similar to java toString()
     def __repr__(self):
         return "Matches(" + str(self.gameID) + "," + self.date + "," + str(self.team1) + "," + str(
-            self.team2) + "," + str(self.winner) + "," + str(self.winner) + "," + str(self.winner) + ")"
+            self.team2) + "," + str(self.winner) + "," + str(self.score) + "," + str(self.url) + ")"
 
     # CRUD create/add a new record to the table
     # returns self or None on error
@@ -87,7 +86,7 @@ class Matches(UserMixin, db.Model):
             db.session.commit()  # SqlAlchemy "unit of work pattern" requires a manual commit
             return self
         except IntegrityError:
-            db.session.remove()
+            #db.session.remove()
             return None
 
     # CRUD read converts self to dictionary

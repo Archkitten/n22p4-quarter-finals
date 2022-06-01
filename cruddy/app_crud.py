@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, url_for, redirect, jsonif
 from flask_login import login_required
 
 from cruddy.query import *
+from games.gamesquery import *
 
 logged_in = False
 # USE_SESSION_FOR_NEXT = True
@@ -10,7 +11,7 @@ logged_in = False
 
 # blueprint defaults https://flask.palletsprojects.com/en/2.0.x/api/#blueprint-objects
 app_crud = Blueprint('crud', __name__,
-                     url_prefix='/team',
+                     url_prefix='/crud',
                      template_folder='templates/cruddy/',
                      static_folder='static',
                      static_url_path='static')
@@ -151,4 +152,25 @@ def search_term():
     req = request.get_json()
     term = req['term']
     response = make_response(jsonify(users_ilike(term)), 200)
+    return response
+
+
+# Search Form
+@app_crud.route('/gamesearch/')
+def gamesearch():
+    """loads form to search Users data"""
+
+    return render_template("gamesearch.html")
+
+
+@app_crud.route('/pleasework/term', methods=["POST"])
+def pleasework():
+    print("test")
+    print("route test")
+    req = request.get_json()
+    term = req['term']
+    print(term)
+    json_ready = games_ilike(term)
+    json = jsonify(json_ready)
+    response = make_response(json, 200)
     return response

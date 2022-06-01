@@ -50,7 +50,7 @@
                                 <th>Away</th>
                                 <th>Winner</th>
                                 <th>Score</th>
-                                <th>URL</th>
+                                <th>UTR</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -63,7 +63,7 @@
                                     <td>{{ row['team2'] }}</td>
                                     <td>{{ row['winner'] }}</td>
                                     <td>{{ row['score'] }}</td>
-                                    <td>{{ row['url'] }}</td>
+                                    <td><a href = {{ row['url'] }} >Match</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -94,7 +94,7 @@
                         <tr>
                             <td><input type="text" name="date" id="date" placeholder="Month/Day/Year" required></td>
                             <td><input type="text" name="team1" id="team1" placeholder="Team 1" required></td>
-                            < <td><input type="text" name="team2" id="team2" placeholder="Team 2" required></td>
+                            <td><input type="text" name="team2" id="team2" placeholder="Team 2" required></td>
                             <td><input type="text" name="winner" id="winner" placeholder="Winner" required></td>
                             <td><input type="text" name="score" id="score" placeholder="9-9" required></td>
                             <td><a><input type="text" name="url" id="url" placeholder="url" required></a></td>

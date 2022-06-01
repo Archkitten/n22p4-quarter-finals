@@ -10,6 +10,8 @@ from cruddy.app_content import app_content
 from workout.app_workout import app_workout
 from workout.app_workout_api import app_workout_api
 
+from games.app_games import app_games
+
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
 app.register_blueprint(app_crud_api)
@@ -18,6 +20,7 @@ app.register_blueprint(app_notes)
 app.register_blueprint(app_content)
 app.register_blueprint(app_workout)
 app.register_blueprint(app_workout_api)
+app.register_blueprint(app_games)
 
 @app.route('/')
 def index():
@@ -66,4 +69,4 @@ def page_not_found(e):
 
 # runs the application on the development server
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host = '0.0.0.0', debug=True,port=8080)

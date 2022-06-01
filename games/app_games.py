@@ -23,6 +23,7 @@ def games():
 @app_games.route('/create/', methods=["POST"])
 def create():
     """gets data from form and add to Notes table"""
+    print("create")
     if request.form:
         po = Matches(
             request.form.get("date"),
@@ -35,6 +36,7 @@ def create():
         po.create()
     return redirect(url_for('games.games'))
 
+
 @app_games.route('/delete/', methods=["POST"])
 def delete():
     """gets userid from form delete corresponding record from Users table"""
@@ -46,19 +48,27 @@ def delete():
     return redirect(url_for('games.game'))
 
 
-
 # Search Form
 @app_games.route('/search/')
 def search():
     """loads form to search Users data"""
-    return render_template("search.html")
+
+    return render_template("gamesearch.html")
 
 
 # Search request and response
-@app_games.route('/search/term/', methods=["POST"])
+@app_games.route('/searchgame/term', methods=["POST"])
 def search_term():
     """ obtain term/search request """
+    print("route test")
     req = request.get_json()
     term = req['term']
-    response = make_response(jsonify(games_ilike(term)), 200)
+    print(term)
+    json_ready = games_ilike(term)
+    json = jsonify(json_ready)
+    response = make_response(json, 200)
     return response
+
+
+# Search request and response
+
