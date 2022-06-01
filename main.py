@@ -9,6 +9,7 @@ from cruddy.app_notes import app_notes
 from cruddy.app_content import app_content
 from workout.app_workout import app_workout
 from workout.app_workout_api import app_workout_api
+import requests
 
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
@@ -40,6 +41,10 @@ def physicaltherapy():
 @app.route('/scoreboard/')
 def scoreboard():
     return render_template("scoreboard.html")
+
+@app.route('/teamapi/')
+def teamapi():
+    return render_template("teamapi.html")
 
 @app.route('/workouts/')
 def workouts():
