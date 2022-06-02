@@ -52,6 +52,10 @@ def rules():
 def contactus():
     return render_template("contactus.html")
 
+@app.route('/school_rank/')
+def school_rank():
+    return render_template("school_rank.html")
+
 @app.route('/calendar/')
 def calendar():
     return render_template("calendar.html")
@@ -64,4 +68,4 @@ def page_not_found(e):
 
 # runs the application on the development server
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8080)

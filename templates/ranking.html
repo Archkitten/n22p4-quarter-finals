@@ -8,8 +8,11 @@
 
     {% set players = results %}
 
-    <div class="col-12" style="text-align: center; ">
-        <h1 style="font-family: exo_bold">Live ATP Rankings</h1>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Live ATP Rankings</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href={{ url_for('school_rank') }}>High School Rankings</a>
+        </div>
     </div>
     <div class="-block" style="margin: 2% 25% 5%; position: absolute; left:-330px;">
 
@@ -69,9 +72,78 @@
     tr:nth-child(even) {
         background-color: darkslateblue;
     }
+
+    .dropbtn {
+        background-color: #2A4284;
+        color: white;
+        font-family: exo_med;
+        font-size: 30px;
+        position: absolute;
+        left: 670px;
+        top:-40px;
+        border-radius: 25px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: darkslateblue;
+        min-width: 160px;
+        position: absolute;
+        left: 670px;
+        top:30px;
+        border-radius: 25px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-color: white;
+        font-family: exo_med;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {background-color: #ddd;}
+
+    .show {display: block;}
     </style>
 
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
 
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+</script>
 
 
 {% endblock %}
