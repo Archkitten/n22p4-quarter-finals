@@ -39,6 +39,10 @@ def physicaltherapy():
 def scoreboard():
     return render_template("scoreboard.html")
 
+@app.route('/teamapi/')
+def teamapi():
+    return render_template("teamapi.html")
+
 @app.route('/workouts/')
 def workouts():
     return render_template("workouts.html")
