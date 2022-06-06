@@ -44,6 +44,10 @@ def physicaltherapy():
 def scoreboard():
     return render_template("scoreboard.html")
 
+@app.route('/teamapi/')
+def teamapi():
+    return render_template("teamapi.html")
+
 @app.route('/workouts/')
 def workouts():
     return render_template("workouts.html")
@@ -64,6 +68,11 @@ def school_rank():
 @app.route('/calendar/')
 def calendar():
     return render_template("calendar.html")
+
+@app.route('/calendar1/')
+def calendar1():
+    return render_template("calendar1.html")
+
 
 @app.errorhandler(404)
 def page_not_found(e):
