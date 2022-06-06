@@ -48,3 +48,13 @@ def create():
         # create a record in the Notes table with the Notes object
         note_object.create()
     return redirect(url_for('notes.notes'))
+
+@app_notes.route('/delete/', methods=["POST"])
+def delete():
+    """gets userid from form delete corresponding record from Users table"""
+    if request.form:
+        userid = request.form.get("userid")
+        po = user_by_id(userid)
+        if po is not None:
+            po.delete()
+    return redirect(url_for('notes.notes'))

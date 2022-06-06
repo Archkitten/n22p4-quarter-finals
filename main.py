@@ -60,6 +60,11 @@ def school_rank():
 def calendar():
     return render_template("calendar.html")
 
+@app.route('/calendar1/')
+def calendar1():
+    return render_template("calendar1.html")
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly
