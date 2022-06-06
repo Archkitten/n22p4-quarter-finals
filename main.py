@@ -8,6 +8,7 @@ from tennis.tennis import tennis_pg
 from cruddy.app_notes import app_notes
 from cruddy.app_content import app_content
 from games.app_games import app_games
+from workout.app_workout import app_workout
 
 app.register_blueprint(sportapi_bp)
 app.register_blueprint(app_crud)
@@ -16,11 +17,15 @@ app.register_blueprint(tennis_pg)
 app.register_blueprint(app_notes)
 app.register_blueprint(app_content)
 app.register_blueprint(app_games)
+app.register_blueprint(app_workout)
 
 @app.route('/')
 def index():
     return render_template("index.html")
 
+@app.route('/announcements/')
+def announcements():
+    return render_template("announcements.html")
 
 @app.route('/sports/')
 def sports():
@@ -68,4 +73,4 @@ def page_not_found(e):
 
 # runs the application on the development server
 if __name__ == "__main__":
-    app.run(debug=True,port=8080)
+    app.run(debug=True,port=8082)

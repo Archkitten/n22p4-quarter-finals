@@ -49,7 +49,10 @@ class Notes(db.Model):
             "note": self.note,
             "userID": self.userID
         }
-
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return None
 
 class Matches(UserMixin, db.Model):
     __tablename__ = 'matches'
@@ -120,12 +123,18 @@ class Matches(UserMixin, db.Model):
         db.session.commit()
         return None
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        return None
+
 
 # Define the Users table within the model
 # -- Object Relational Mapping (ORM) is the key concept of SQLAlchemy
 # -- a.) db.Model is like an inner layer of the onion in ORM
 # -- b.) Users represents data we want to store, something that is built on db.Model
 # -- c.) SQLAlchemy ORM is layer on top of SQLAlchemy Core, then SQLAlchemy engine, SQL
+
 class Users(UserMixin, db.Model):
     __tablename__ = 'users'
 

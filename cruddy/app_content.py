@@ -51,6 +51,7 @@ files_uploaded = []
 @app_content.route('/')
 @login_required
 def content():
+    #if len(files_uploaded) > 0:
     # grab user object (uo) based on current login
     uo = user_by_id(current_user.userID)
     user = uo.read()  # extract user record (Dictionary)
@@ -69,10 +70,10 @@ def upload():
         # save file to location defined in __init__.py
         # ... os.path uses os specific pathing for web server
         # ... secure_filename checks for integrity of name for operating system. Pass it a filename and it will return a secure version of it.
-
-        fo.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(fo.filename)))
+        savePathName = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(fo.filename))
+        fo.save(savePathName)
         # ... add to files_uploaded to give feedback of success on HTML page
-        files_uploaded.insert(0, url_for('static', filename='uploads/' + fo.filename))
+        files_uploaded.insert(0, url_for('static', filename='uploads/' + secure_filename(fo.filename)))
     except:
         # errors handled, but specific errors are not messaged to user
         pass

@@ -1,0 +1,82 @@
+{% extends "layouts/base.html" %}
+
+
+{% block body %}
+    <style>
+        body {
+            background-color: #003d66;
+        }
+
+        #title {
+            font-family: exo_bold;
+            color: white;
+            font-size: 100px;
+            position:absolute;
+            left: 200px;
+            top: 200px;
+        }
+
+        #slogan {
+            font-family: exo_med;
+            color: white;
+            font-size: 40px;
+            position:absolute;
+            left: 210px;
+            top: 345px;
+        }
+
+        #slogan2 {
+            font-family: exo_med;
+            color: white;
+            font-size: 40px;
+            position:absolute;
+            left: 185px;
+            top: 400px;
+        }
+
+        #title2 {
+            font-family: exo;
+            color: white;
+            font-size: 100px;
+            position:absolute;
+            left: 500px;
+            top: 200px;
+        }
+        p {
+            position: absolute;
+            text-align: center;
+            color: white;
+        }
+    </style>
+    <script>
+        function ShowAndHide() {
+            let x = document.getElementById('hiddentext');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        // Answer Function
+        function AnswerFunction() {
+            let result = document.getElementById('answer').value;
+            if (result === 'Santiago') {
+                document.getElementById('result1').innerHTML = "Well Done!"
+            }
+            document.getElementById('result1').innerHTML = "Not Right!"
+        }
+    </script>
+    <h1 id="title">DNHS</h1>
+    <h1 id="title2">Tennis</h1>
+    <p id="slogan">
+    Boys Team Banquet 6/4/22
+    <br>
+    Girls Remember to Fill out the Ticket to Play for Fall
+    <br>
+    Have a Great Summer!
+    </p>
+    <button onclick="ShowAndHide()">Boys Team</button>
+    <div class="container" id="hiddentext" style="display:none; color: white">This is the capital city of Chile
+    </div>
+
+{% endblock %}
