@@ -1,0 +1,92 @@
+{% extends "layouts/base.html" %}
+
+<!DOCTYPE html>
+
+
+{% block body %}
+    {% set roster = results.roster %}
+
+    <style>
+        body {
+            background: darkslateblue;
+        }
+    </style>
+
+    <div class="container">
+        <h1 style="font-family: exo_bold; color: white; text-align: center">Girls Player Roster</h1>
+        <a style=" border: 2px solid white;border-radius: 25px; font-family: exo_med; position: absolute; left: 1%;color: white; font-size: 50px; padding-right: 24px; position:absolute; top:120px; padding-left: 20px;"
+           class="nav-link" href={{ url_for('tennis.roster') }}>Boys</a>
+        <h3>
+
+            <input type="search" placeholder="Search..." class="form-control search-input" data-table="customers-list"/>
+        </h3>
+        <table class="table table-striped mt32 customers-list">
+            <thead>
+            <tr>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Name</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Class</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Singles UTR</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Doubles UTR</th>
+                <th style="font-family: exo_bold; color: #ADA8B6; font-size: 40px;">Nationality</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for player in roster %}
+                <tr style="font-family: exo_med; color: white; font-size: 20px;">
+                    <td>{{ player.displayName }}</td>
+                    <td>{{ player.playerHighSchoolDetails.gradClassName }}</td>
+                    <td>{{ player.singlesUtr }}</td>
+                    <td>{{ player.doublesUtr }}</td>
+                    <td>{{ player.nationality }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        (function(document) {
+            'use strict';
+
+            var TableFilter = (function(myArray) {
+                var search_input;
+
+                function _onInputSearch(e) {
+                    search_input = e.target;
+                    var tables = document.getElementsByClassName(search_input.getAttribute('data-table'));
+                    myArray.forEach.call(tables, function(table) {
+                        myArray.forEach.call(table.tBodies, function(tbody) {
+                            myArray.forEach.call(tbody.rows, function(row) {
+                                var text_content = row.textContent.toLowerCase();
+                                var search_val = search_input.value.toLowerCase();
+                                row.style.display = text_content.indexOf(search_val) > -1 ? '' : 'none';
+                            });
+                        });
+                    });
+                }
+
+                return {
+                    init: function() {
+                        var inputs = document.getElementsByClassName('search-input');
+                        myArray.forEach.call(inputs, function(input) {
+                            input.oninput = _onInputSearch;
+                        });
+                    }
+                };
+            })(Array.prototype);
+
+            document.addEventListener('readystatechange', function() {
+                if (document.readyState === 'complete') {
+                    TableFilter.init();
+                }
+            });
+
+        })(document);
+    </script>
+
+
+
+{% endblock %}

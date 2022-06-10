@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "layouts/base.html" %}
+
+{% block body %}
+<body>
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">High School Rankings</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href={{ url_for('tennis.ranking') }}>Live ATP Rankings</a>
+    </div>
+</div>
+<table style="text-align:center;position:absolute; left:240px;margin: 5%; font-family:exo_med; color:white; width: 60%; text-align: center; border: 10px solid white; background-color: #2A4284">
+    <tr style="padding-right: 20px; font-family:exo_bold; color: #ADA8B6; font-size: 40px;">
+        <th>Rank</th>
+        <th>School</th>
+        <th>Power 6</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Menlo School</td>
+        <td>64.25</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>The Bishop's School</td>
+        <td>58.81</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Calabasas High School</td>
+        <td>57.51</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Claremont High School</td>
+        <td>57.41</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Canyon Crest Academy</td>
+        <td>57.16</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Mission San Jose High School</td>
+        <td>55.13</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Harvard-Westlake School</td>
+        <td>55.01</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Del Norte High School</td>
+        <td>52.30</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Bellarmine College Preparatory</td>
+        <td>49.78</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>La Jolla Country Day School</td>
+        <td>49.58</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>Torrey Pines High School</td>
+        <td>48.77</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Palm Desert High School</td>
+        <td>48.30</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>Loyola High School</td>
+        <td>48.09</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>Eastlake High School</td>
+        <td>48.00</td>
+    </tr>
+    <tr>
+        <td>15</td>
+        <td>Redwood High School Larkspur</td>
+        <td>47.81</td>
+    </tr>
+    <tr>
+        <td>16</td>
+        <td>Amador Valley High School</td>
+        <td>47.36</td>
+    </tr>
+    <tr>
+        <td>17</td>
+        <td>La Jolla High School</td>
+        <td>47.18</td>
+    </tr>
+    <tr>
+        <td>18</td>
+        <td>Miramonte High School</td>
+        <td>47.02</td>
+    </tr>
+    <tr>
+        <td>19</td>
+        <td>St Augustine</td>
+        <td>47.02</td>
+    </tr>
+    <tr>
+        <td>20</td>
+        <td>Foothill High School</td>
+        <td>45.81</td>
+    </tr>
+</table>
+</body>
+
+    <style>
+    body {
+        background: #2A4284;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: darkslateblue;
+    }
+    .dropbtn {
+        background-color: #2A4284;
+        color: white;
+        font-family: exo_med;
+        font-size: 26px;
+        position: absolute;
+        left: 700px;
+        top:-60px;
+        border-radius: 25px;
+        padding: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: darkslateblue;
+        min-width: 160px;
+        position: absolute;
+        left: 670px;
+        top:30px;
+        border-radius: 25px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        font-color: white;
+        font-family: exo_med;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {background-color: #ddd;}
+
+    .show {display: block;}
+
+    </style>
+</html>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% block body %}
+
+    <style>
+        body {
+            background: #284F73;
+            color: beige;
+        }
+    </style>
+
+
+    <div class="container py-4 " style="background-color: white">
+        <div class="container " style="background-color: #0d5237; color: white">
+            <div class="p-5 mb-4 " style="font-family: exo_med; text-align: center">
+                <h2>Photo Gallery</h2>
+                <!--Notes input form, textarea supports multiple lines of input  -->
+                <form id="upload" enctype="multipart/form-data" action = "{{url_for('content.upload')}}" method = "POST">
+                    <table class="table">
+                        <tr>
+                            <th style=" padding-bottom:10px;text-align: center; color: white"><label for="filename">Upload a new file:</label></th>
+                        </tr>
+                        <tr style="position: absolute; left: 490px;">
+                            <td style="color: white"><input type="file" id="filename" name="filename" /></td>
+                            <td style="color: white"> <input type="submit" value="Upload" ></td>
+                        </tr>
+                    </table>
+                </form>
+                <!-- Add something to show what user has uploaded-->
+                <div class="table">
+                    <table class="table">
+                        {% for file in files %}
+                            <tr>
+                                <td> <image src="{{ file }}" width="150px"></image></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
